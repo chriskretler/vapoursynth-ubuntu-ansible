@@ -79,4 +79,16 @@ RUN git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf \
 	&& make \
 	&& make install
 
+# required for KNLMeans install	
+RUN apt-get install -y ocl-icd-*
+	
+## KNLMeansCL
+RUN git clone https://github.com/Khanattila/KNLMeansCL \
+	&& cd $HOME/KNLMeansCL \
+	&& git checkout tags/v0.6.11 \
+	&& chmod +x configure \
+	&& ./configure \
+	&& make \
+	&& make install
+
 CMD /bin/bash
