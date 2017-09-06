@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
 RUN apt-get update \
-	&& apt-get install -y build-essential git yasm libass-dev python3-pip python3-dev cython3 \
-	autoconf libtool libmagick++-dev qt5-default libfftw3-dev wget
+	&& apt-get install -y build-essential git yasm libass-dev python3-pip python3-dev \
+	cython3 autoconf libtool libmagick++-dev qt5-default libfftw3-dev wget ocl-icd-*
 
 ENV HOME /usr/local/vsynth-install
 RUN mkdir -p $HOME
@@ -16,8 +16,11 @@ RUN git clone https://github.com/l-smash/l-smash.git \
 	&& git clone https://github.com/ffmpeg/ffmpeg.git \
 	&& git clone https://github.com/sekrit-twc/zimg.git \
 	&& git clone https://github.com/vapoursynth/vapoursynth.git \
-	&& git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
+	&& git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git \
+	&& git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf \
+	&& git clone https://github.com/Khanattila/KNLMeansCL
 
+# Required for x264
 RUN mkdir $HOME/nasm \
 	&& cd $HOME/nasm \
 	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz \
@@ -31,9 +34,7 @@ RUN cd $HOME/l-smash \
     && make lib \
 	&& make install-lib
 
-## needed nasm 2.13 here. Ubuntu version is 2.11, thus the disable.
 RUN cd $HOME/x264 \
-#	&& ./configure --enable-shared --disable-asm \
 	&& ./configure --enable-shared \
 	&& make \
 	&& make install
@@ -69,22 +70,18 @@ RUN cd $HOME/vapoursynth-editor/pro \
 	&& mv ../build/release-64bit-gcc $HOME/Applications/VapourSynth-Editor \
 	&& ln -s $HOME/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
 
-## MVMulti
-RUN git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf \
-	&& cd $HOME/vapoursynth-mvtools-sf \
+## MVMulti - r7 is the last tag to not require c++ 17.
+## This won't be available in gcc until Ubuntu 17.10.
+RUN cd $HOME/vapoursynth-mvtools-sf \
 	&& git checkout tags/r7 \
 	&& chmod +x autogen.sh \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
 	&& make install
-
-# required for KNLMeans install	
-RUN apt-get install -y ocl-icd-*
 	
 ## KNLMeansCL
-RUN git clone https://github.com/Khanattila/KNLMeansCL \
-	&& cd $HOME/KNLMeansCL \
+RUN cd $HOME/KNLMeansCL \
 	&& git checkout tags/v0.6.11 \
 	&& chmod +x configure \
 	&& ./configure \
