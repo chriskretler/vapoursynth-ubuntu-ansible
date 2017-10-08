@@ -21,14 +21,14 @@ echo "Updating Ubuntu and Python libraries..."
 apt-get update
 apt-get upgrade
 
-# removed python3-pip, as python-pip is required for cython install.
-apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libtool libmagick++-dev qt5-default libfftw3-dev wget yasm python-pip
+# removed python-pip, as python-pip is required for cython install.
+apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libtool libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
 
 apt-get purge -y thunderbird libreoffice*
 
 apt-get autoremove -y
 
-pip install cython pip -U
+pip3 install cython pip -U
 
 echo "Downloading source code..."
 mkdir /home/vagrant/installs
