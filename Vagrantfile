@@ -5,9 +5,16 @@ Vagrant.configure(2) do |config|
    	config.vm.boot_timeout = 600
 
 	config.vm.provider 'virtualbox' do |vb|
-		vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
-		vb.memory = 2048
+		vb.memory = 4096
     	vb.name = "vsynth-dev"
+		vb.gui = true
+		vb.customize [
+			"modifyvm", :id,
+			"--cableconnected1", "on",
+			"--vram", "64",
+			"--accelerate3d", "off",
+			"--pae", "off"
+		]
 	end
    	
 	config.vm.provision "shell", inline: $recipe
@@ -21,8 +28,8 @@ echo "Updating Ubuntu and Python libraries..."
 apt-get update
 apt-get upgrade
 
-# removed python-pip, as python-pip is required for cython install.
-apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libtool libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
+apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf \ 
+	libtool libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
 
 apt-get purge -y thunderbird libreoffice*
 
