@@ -67,6 +67,7 @@ cd /home/vagrant/installs/x264 \
 
 echo "Install ffmpeg"
 cd /home/vagrant/installs/ffmpeg \
+	&& git checkout tags/n3.3.4
 	&& ./configure --enable-gpl --enable-libx264 --enable-avresample --enable-shared \
 	&& make \
 	&& make install
@@ -92,9 +93,14 @@ cd /home/vagrant/installs/vapoursynth \
 	&& ldconfig
 
 echo "Install Vapoursynth-Editor"
+sudo apt-get install -y qml-module-qt-websockets libqtnetwork4-perl
+
+
 # VapourSynth-Editor, this is currently broken.
-cd /home/vagrant/installs/vapoursynth-editor/pro \
-	&& qmake pro.pro \
+cd /home/vagrant/installs/vapoursynth-editor \
+	&& git checkout tags/r17 \
+	&& cd pro \
+	&& qmake -norecursive pro.pro CONFIG+=release\
 	&& make \
 	&& mkdir $HOME/Applications \
 	&& mv ../build/release-64bit-gcc $HOME/Applications/VapourSynth-Editor \
