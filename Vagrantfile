@@ -26,21 +26,15 @@ $recipe = <<-'CONTENTS'
 
 echo "Updating Ubuntu and Python libraries..."
 apt-get update
-apt-get upgrade
-
-apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf \ 
-	libtool libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
-
+apt-get -y upgrade
+apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
 apt-get purge -y thunderbird libreoffice*
-
 apt-get autoremove -y
-
 pip3 install cython pip -U
 
 echo "Downloading source code..."
 mkdir /home/vagrant/installs
 cd /home/vagrant/installs
-
 git clone https://github.com/l-smash/l-smash.git
 git clone git://git.videolan.org/x264.git
 git clone https://github.com/ffmpeg/ffmpeg.git
@@ -85,7 +79,7 @@ cd /home/vagrant/installs/zimg \
 	&& make install
 
 echo "Install Vapoursynth"
-## VapourSynth
+# VapourSynth
 cd /home/vagrant/installs/vapoursynth \
 	&& git checkout tags/R39 \
 	&& ./autogen.sh \
@@ -98,7 +92,7 @@ cd /home/vagrant/installs/vapoursynth \
 	&& ldconfig
 
 echo "Install Vapoursynth-Editor"
-## VapourSynth-Editor
+# VapourSynth-Editor, this is currently broken.
 cd /home/vagrant/installs/vapoursynth-editor/pro \
 	&& qmake pro.pro \
 	&& make \
@@ -107,8 +101,8 @@ cd /home/vagrant/installs/vapoursynth-editor/pro \
 	&& ln -s $HOME/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
 
 echo "Install MVMulti"
-## MVMulti - r7 is the last tag to not require c++ 17.
-## This won't be available in gcc until Ubuntu 17.10.
+# MVMulti - r7 is the last tag to not require c++ 17.
+# This won't be available in gcc until Ubuntu 17.10.
 cd /home/vagrant/installs/vapoursynth-mvtools-sf \
 	&& git checkout tags/r7 \
 	&& chmod +x autogen.sh \
