@@ -22,13 +22,13 @@ Vagrant.configure(2) do |config|
 end
 
 $recipe = <<-'CONTENTS'
-#export DEBIAN_FRONTEND=interactive
+export DEBIAN_FRONTEND=noninteractive
 
 echo "Updating Ubuntu and Python libraries..."
+apt-get purge -y thunderbird libreoffice*
 apt-get update
 apt-get -y upgrade
 apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
-apt-get purge -y thunderbird libreoffice*
 apt-get autoremove -y
 pip3 install cython pip -U
 
@@ -67,13 +67,14 @@ cd /home/vagrant/installs/x264 \
 
 echo "Install ffmpeg"
 cd /home/vagrant/installs/ffmpeg \
-	&& git checkout tags/n3.3.4
+	&& git checkout tags/n3.3.4 \
 	&& ./configure --enable-gpl --enable-libx264 --enable-avresample --enable-shared \
 	&& make \
 	&& make install
 
 echo "Install zimg"
 cd /home/vagrant/installs/zimg \
+	&& git checkout tags/release-2.6.1 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
@@ -87,24 +88,23 @@ cd /home/vagrant/installs/vapoursynth \
 	&& ./configure \
 	&& make \
 	&& make install \
-	&& mkdir -p $HOME/.config/vapoursynth \
-	&& echo 'UserPluginDir=/usr/local/lib' | tee --append $HOME/.config/vapoursynth/vapoursynth.conf \
+	&& mkdir -p /home/vagrant/.config/vapoursynth \
+	&& echo 'UserPluginDir=/usr/local/lib' | tee --append /home/vagrant/.config/vapoursynth/vapoursynth.conf \
 	&& echo 'include /usr/local/lib' | tee --append /etc/ld.so.conf \
 	&& ldconfig
 
 echo "Install Vapoursynth-Editor"
-sudo apt-get install -y qml-module-qt-websockets libqtnetwork4-perl
-
+sudo apt-get install -y libqt5websockets5-dev #qml-module-qt-websockets
 
 # VapourSynth-Editor, this is currently broken.
 cd /home/vagrant/installs/vapoursynth-editor \
 	&& git checkout tags/r17 \
 	&& cd pro \
-	&& qmake -norecursive pro.pro CONFIG+=release\
+	&& qmake -norecursive pro.pro CONFIG+=release \
 	&& make \
-	&& mkdir $HOME/Applications \
+	&& mkdir /home/vagrant/Applications \
 	&& mv ../build/release-64bit-gcc $HOME/Applications/VapourSynth-Editor \
-	&& ln -s $HOME/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
+	&& ln -s /home/vagrant/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
 
 echo "Install MVMulti"
 # MVMulti - r7 is the last tag to not require c++ 17.
