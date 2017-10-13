@@ -28,7 +28,7 @@ echo "Updating Ubuntu and Python libraries..."
 apt-get purge -y thunderbird libreoffice*
 apt-get update
 apt-get -y upgrade
-apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip
+apt-get install -y build-essential git libass-dev python3-dev cython3 autoconf libmagick++-dev qt5-default libfftw3-dev wget yasm python3-pip libqt5websockets5-dev
 apt-get autoremove -y
 pip3 install cython pip -U
 
@@ -94,16 +94,14 @@ cd /home/vagrant/installs/vapoursynth \
 	&& ldconfig
 
 echo "Install Vapoursynth-Editor"
-sudo apt-get install -y libqt5websockets5-dev #qml-module-qt-websockets
-
-# VapourSynth-Editor, this is currently broken.
+# VapourSynth-Editor.
 cd /home/vagrant/installs/vapoursynth-editor \
 	&& git checkout tags/r17 \
 	&& cd pro \
 	&& qmake -norecursive pro.pro CONFIG+=release \
 	&& make \
 	&& mkdir /home/vagrant/Applications \
-	&& mv ../build/release-64bit-gcc $HOME/Applications/VapourSynth-Editor \
+	&& mv ../build/release-64bit-gcc /home/vagrant/Applications/VapourSynth-Editor \
 	&& ln -s /home/vagrant/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
 
 echo "Install MVMulti"
