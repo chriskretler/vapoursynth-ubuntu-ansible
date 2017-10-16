@@ -57,7 +57,7 @@ cd ~/installs/vapoursynth \
 	&& make \
 	&& sudo make install \
 	&& mkdir -p ~/.config/vapoursynth \
-	&& echo 'export PYTHONPATH=/usr/local/lib/python3.5/site-packages/' | tee --append ~/.bashrc
+	&& echo 'export PYTHONPATH=/usr/local/lib/python3.5/site-packages/' | tee --append ~/.bashrc \
 	&& echo 'UserPluginDir=/usr/local/lib' | tee --append ~/.config/vapoursynth/vapoursynth.conf \
 	&& echo 'include /usr/local/lib' | sudo tee --append /etc/ld.so.conf \
 	&& sudo ldconfig \
