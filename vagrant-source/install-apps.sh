@@ -10,7 +10,7 @@ git clone https://github.com/sekrit-twc/zimg.git
 git clone https://github.com/vapoursynth/vapoursynth.git
 git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
 #git clone https://github.com/darealshinji/vapoursynth-plugins
-#git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf
+git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf
 
 echo "Install NASM"
 # Required for x264
@@ -64,7 +64,7 @@ cd ~/installs/vapoursynth \
 
 echo "Install Vapoursynth-Editor"
 cd ~/installs/vapoursynth-editor \
-	&& git checkout tags/r17 \
+	&& git checkout tags/r18 \
 	&& cd pro \
 	&& qmake -norecursive pro.pro CONFIG+=release \
 	&& make \
@@ -79,13 +79,13 @@ cd ~/installs/vapoursynth-editor \
 #	&& make \
 #	&& sudo make install
 
-#echo "Install MVMulti"
+echo "Install MVMulti"
 # MVMulti - r7 is the last tag to not require c++ 17.
 # This won't be available in gcc until Ubuntu 17.10.
-#cd ~/installs/vapoursynth-mvtools-sf \
-#	&& git checkout tags/r7 \
-#	&& chmod +x autogen.sh \
-#	&& ./autogen.sh \
-#	&& ./configure \
-#	&& make \
-#	&& sudo make install
+cd ~/installs/vapoursynth-mvtools-sf \
+	&& git checkout tags/r7 \
+	&& chmod +x autogen.sh \
+	&& ./autogen.sh \
+	&& ./configure \
+	&& make \
+	&& sudo make install
