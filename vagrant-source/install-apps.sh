@@ -9,7 +9,7 @@ git clone https://github.com/ffmpeg/ffmpeg.git
 git clone https://github.com/sekrit-twc/zimg.git
 git clone https://github.com/vapoursynth/vapoursynth.git
 git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
-#git clone https://github.com/darealshinji/vapoursynth-plugins
+git clone https://github.com/darealshinji/vapoursynth-plugins
 git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf
 
 echo "Install NASM"
@@ -36,7 +36,8 @@ cd ~/installs/x264 \
 
 echo "Install ffmpeg"
 cd ~/installs/ffmpeg \
-	&& git checkout tags/n3.3.4 \
+#	&& git checkout tags/n3.3.4 \
+	&& git checkout tags/n3.4 \
 	&& ./configure --enable-gpl --enable-libx264 --enable-avresample --enable-shared \
 	&& make \
 	&& sudo make install
@@ -51,7 +52,7 @@ cd ~/installs/zimg \
 
 echo "Install Vapoursynth"
 cd ~/installs/vapoursynth \
-	&& git checkout tags/R39 \
+	&& git checkout tags/R40 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
@@ -72,12 +73,12 @@ cd ~/installs/vapoursynth-editor \
 	&& mv ../build/release-64bit-gcc ~/Applications/VapourSynth-Editor \
 	&& sudo ln -s ~/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
 
-#echo "Install vapoursynth-extra-plugins"
-#cd ~/installs/vapoursynth-plugins \
-#	&& ./autogen.sh \
-#	&& ./configure \
-#	&& make \
-#	&& sudo make install
+echo "Install vapoursynth-extra-plugins"
+cd ~/installs/vapoursynth-plugins \
+	&& ./autogen.sh \
+	&& ./configure \
+	&& make \
+	&& sudo make install
 
 echo "Install MVMulti"
 # MVMulti - r7 is the last tag to not require c++ 17.
