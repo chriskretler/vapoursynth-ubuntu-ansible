@@ -1,5 +1,13 @@
 #!/bin/bash -x
 
+# 4/19/2018: include nnedi3cl when I figure out what version of boost is required.
+# https://forum.doom9.org/showthread.php?p=1839813#post1839813
+# https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL
+
+# 4/19/2018: include myrosilk's fft3d update when ubuntu 18.04 is out, which will
+# provide an updated gcc version
+# https://github.com/myrsloik/VapourSynth-FFT3DFilter
+
 echo "Downloading source code..."
 mkdir ~/installs
 cd ~/installs
@@ -35,8 +43,8 @@ cd ~/installs/x264 \
 	&& sudo make install
 
 echo "Install ffmpeg"
+# was originally 3.3.4
 cd ~/installs/ffmpeg \
-#	&& git checkout tags/n3.3.4 \
 	&& git checkout tags/n3.4 \
 	&& ./configure --enable-gpl --enable-libx264 --enable-avresample --enable-shared \
 	&& make \
@@ -44,7 +52,7 @@ cd ~/installs/ffmpeg \
 
 echo "Install zimg"
 cd ~/installs/zimg \
-	&& git checkout tags/release-2.6.1 \
+	&& git checkout tags/release-2.6.3 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
