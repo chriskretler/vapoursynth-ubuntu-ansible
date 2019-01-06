@@ -24,20 +24,27 @@ echo "Install NASM"
 # Required for x264
 mkdir ~/installs/nasm \
 	&& cd ~/installs/nasm \
-	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz \
-	&& tar -xf nasm-2.13.01.tar.xz --strip-components=1 \
+# 1/5/2019: updated version
+#	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz \
+#	&& tar -xf nasm-2.13.01.tar.xz --strip-components=1 \
+	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz \
+	&& tar -xf nasm-2.14.02.tar.xz --strip-components=1 \
 	&& ./configure --prefix=/usr \
 	&& make \
 	&& sudo make install
 
 echo "Install l-smash"
 cd ~/installs/l-smash \
+# 1/5/2019: added specific tag
+	&& git checkout tags/v2.14.5 \
 	&& ./configure --enable-shared \
-    && make lib \
+	&& make lib \
 	&& sudo make install-lib
 
 echo "Install x264"
 cd ~/installs/x264 \
+# 1/5/2019: switch to stable branch
+	&& git checkout stable \
 	&& ./configure --enable-shared \
 	&& make \
 	&& sudo make install
@@ -45,14 +52,15 @@ cd ~/installs/x264 \
 echo "Install ffmpeg"
 # was originally 3.3.4
 cd ~/installs/ffmpeg \
-	&& git checkout tags/n3.4 \
+	&& git checkout tags/n3.4.5 \
 	&& ./configure --enable-gpl --enable-libx264 --enable-avresample --enable-shared \
 	&& make \
 	&& sudo make install
 
 echo "Install zimg"
 cd ~/installs/zimg \
-	&& git checkout tags/release-2.6.3 \
+#	&& git checkout tags/release-2.6.3 \
+	&& git checkout tags/release-2.8 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
@@ -60,7 +68,7 @@ cd ~/installs/zimg \
 
 echo "Install Vapoursynth"
 cd ~/installs/vapoursynth \
-	&& git checkout tags/R40 \
+	&& git checkout tags/R45.1 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
