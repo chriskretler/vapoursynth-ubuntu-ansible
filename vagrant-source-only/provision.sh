@@ -14,4 +14,4 @@ pip3 install cython pip --user -U
 useradd -m -s /bin/bash -U chris
 
 # run the install-apps script as chris.
-su -c "source /vagrant/install-apps.sh" chris
+su -c "source /vagrant/install-apps.sh" vagrant

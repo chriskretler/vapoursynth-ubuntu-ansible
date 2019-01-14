@@ -19,6 +19,7 @@ git clone https://github.com/vapoursynth/vapoursynth.git
 git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
 git clone https://github.com/darealshinji/vapoursynth-plugins
 git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf
+git clone https://github.com/kice/vs_mxDnCNN
 
 echo "Install NASM"
 # Required for x264
@@ -106,3 +107,6 @@ cd ~/installs/vapoursynth-mvtools-sf \
 	&& ./configure \
 	&& make \
 	&& sudo make install
+
+echo "clone mxDnCnn"
+
