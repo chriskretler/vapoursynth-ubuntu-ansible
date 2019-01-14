@@ -25,26 +25,25 @@ git clone https://github.com/kice/vs_mxDnCNN
 
 echo "Build NASM"
 # Required for x264
+# 1/5/2019: updated version
+# was http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz
 mkdir ~/installs/nasm \
 	&& cd ~/installs/nasm \
-# 1/5/2019: updated version
-#	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz \
-#	&& tar -xf nasm-2.13.01.tar.xz --strip-components=1 \
 	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz \
 	&& tar -xf nasm-2.14.02.tar.xz --strip-components=1 \
 	&& ./configure --prefix=/usr \
 	&& make
 
 echo "Build l-smash"
-cd ~/installs/l-smash \
 # 1/5/2019: added specific tag
+cd ~/installs/l-smash \
 	&& git checkout tags/v2.14.5 \
 	&& ./configure --enable-shared \
 	&& make lib
 
 echo "Build x264"
-cd ~/installs/x264 \
 # 1/5/2019: switch to stable branch
+cd ~/installs/x264 \
 	&& git checkout stable \
 	&& ./configure --enable-shared \
 	&& make
@@ -57,8 +56,8 @@ cd ~/installs/ffmpeg \
 	&& make
 
 echo "Build zimg"
+# 1/5/2019: was release-2.6.3
 cd ~/installs/zimg \
-#	&& git checkout tags/release-2.6.3 \
 	&& git checkout tags/release-2.8 \
 	&& ./autogen.sh \
 	&& ./configure \
