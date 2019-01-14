@@ -13,7 +13,7 @@ apt-get autoremove -y
 useradd -m -s /bin/bash -U chris
 
 # run the install-apps script as chris.
-su -c "source /vagrant/install-apps.sh" chris
+su -c "source ./user-script.sh" chris
 
 echo "Install NASM"
 cd ~/installs/nasm \
