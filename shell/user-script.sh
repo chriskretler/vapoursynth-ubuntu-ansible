@@ -23,7 +23,7 @@ git clone https://github.com/darealshinji/vapoursynth-plugins
 git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf
 git clone https://github.com/kice/vs_mxDnCNN
 
-echo "Build NASM"
+echo "Download NASM"
 # Required for x264
 # 1/5/2019: updated version
 # was http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz
@@ -31,9 +31,11 @@ mkdir ~/installs/nasm \
 	&& cd ~/installs/nasm \
 	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz \
 	&& tar -xf nasm-2.14.02.tar.xz --strip-components=1 \
-	&& ./configure --prefix=/usr \
-	&& make
+#	&& ./configure --prefix=/usr \
+#	&& make
+#	&& sudo make install
 
+: <<'END2'
 echo "Build l-smash"
 # 1/5/2019: added specific tag
 cd ~/installs/l-smash \
@@ -99,4 +101,5 @@ cd ~/installs/vapoursynth-mvtools-sf \
 	&& make
 
 echo "clone mxDnCnn"
+END1
 
