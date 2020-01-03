@@ -1,62 +1,82 @@
 #!/bin/bash -x
 
+# 4/19/2018: include nnedi3cl when I figure out what version of boost is required.
+# https://forum.doom9.org/showthread.php?p=1839813#post1839813
+# https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL
+
+# 4/19/2018: include myrosilk's fft3d update when ubuntu 18.04 is out, which will
+# provide an updated gcc version
+# https://github.com/myrsloik/VapourSynth-FFT3DFilter
+
+# 12/27/2019: Per this:
+# http://vapoursynth.com/doc/installation.html#linux-and-os-x-compilation-instructions
+# the following are not needed:
+# nasm
+# l-smash
+# x264
+# ffmpeg (still needed for extra plugins)
+# zimg (image magick) is optional.
+
 echo "Downloading source code..."
 mkdir ~/installs
 cd ~/installs
 git clone https://github.com/l-smash/l-smash.git
-#git clone git://git.videolan.org/x264.git
+git clone https://code.videolan.org/videolan/x264.git
 git clone https://github.com/ffmpeg/ffmpeg.git
 git clone https://github.com/sekrit-twc/zimg.git
 git clone https://github.com/vapoursynth/vapoursynth.git
 git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
 git clone https://github.com/darealshinji/vapoursynth-plugins
 git clone https://github.com/IFeelBloated/vapoursynth-mvtools-sf
+#git clone https://github.com/kice/vs_mxDnCNN
 
-#echo "Install NASM"
+echo "Install NASM"
 # Required for x264
-#mkdir ~/installs/nasm \
-#	&& cd ~/installs/nasm \
-#	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.xz \
-#	&& tar -xf nasm-2.13.01.tar.xz --strip-components=1 \
-#	&& ./configure --prefix=/usr \
-#	&& make \
-#	&& sudo make install
+# 2.13--probably sufficient for x264 and vsynth--comes with ubuntu 18.04.
+mkdir ~/installs/nasm \
+	&& cd ~/installs/nasm \
+	&& wget http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz \
+	&& tar -xf nasm-2.14.02.tar.xz --strip-components=1 \
+	&& ./configure --prefix=/usr \
+	&& make \
+	&& sudo make install
 
 echo "Install l-smash"
+# 12/27/2019: no new versions since 2.14.5
 cd ~/installs/l-smash \
+	&& git checkout tags/v2.14.5 \
 	&& ./configure --enable-shared \
-    && make lib \
+	&& make lib \
 	&& sudo make install-lib
 
-#echo "Install x264"
-# 16.04: 0.148.2643+git5c65704-1
-# 18.04: 0.152.2854+gite9a5903-2
-#cd ~/installs/x264 \
-#	&& ./configure --enable-shared \
-#	&& make \
-#	&& sudo make install
+echo "Install x264"
+# 1/5/2019: switch to stable branch
+cd ~/installs/x264 \
+	&& git checkout stable \
+	&& ./configure --enable-shared \
+	&& make \
+	&& sudo make install
 
 echo "Install ffmpeg"
-# 16:04: 2.8.15
-# 18.04: 3.4.4
+# was originally 3.3.4
 cd ~/installs/ffmpeg \
-#	&& git checkout tags/n3.3.4 \
-	&& git checkout tags/n3.4 \
+	&& git checkout tags/n3.4.7 \
 	&& ./configure --enable-gpl --enable-libx264 --enable-avresample --enable-shared \
 	&& make \
 	&& sudo make install
 
 echo "Install zimg"
 cd ~/installs/zimg \
-	&& git checkout tags/release-2.6.1 \
+	&& git checkout tags/release-2.9.2 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
 	&& sudo make install
 
 echo "Install Vapoursynth"
+# 12/27/2019: Will that python 3.5 fly?
 cd ~/installs/vapoursynth \
-	&& git checkout tags/R40 \
+	&& git checkout tags/R48 \
 	&& ./autogen.sh \
 	&& ./configure \
 	&& make \
@@ -69,7 +89,7 @@ cd ~/installs/vapoursynth \
 
 echo "Install Vapoursynth-Editor"
 cd ~/installs/vapoursynth-editor \
-	&& git checkout tags/r18 \
+	&& git checkout tags/r19 \
 	&& cd pro \
 	&& qmake -norecursive pro.pro CONFIG+=release \
 	&& make \
@@ -94,3 +114,6 @@ cd ~/installs/vapoursynth-mvtools-sf \
 	&& ./configure \
 	&& make \
 	&& sudo make install
+
+#echo "clone mxDnCnn"
+
