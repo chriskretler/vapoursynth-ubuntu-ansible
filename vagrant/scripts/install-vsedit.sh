@@ -27,11 +27,14 @@ if echo "$vsedit_version" | grep -q $version; then
    echo "Current version of vsedit is already installed."
 else
    echo "Install vsedit"
-   cd ~/installs/vapoursynth-editor/pro \
+   cd ~/installs/vapoursynth-editor \
+      && git checkout $version \   
+      && cd pro
 	   && qmake -norecursive pro.pro CONFIG+=release \
 	   && make \
 	   && mkdir ~/Applications \
 	   && mv ../build/release-64bit-gcc ~/Applications/VapourSynth-Editor \
-	   && sudo ln -s ~/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit
+	   && sudo ln -s ~/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit \
+      && cp ./vsedit.desktop ~/.local/share/applications
 fi
 

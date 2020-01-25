@@ -1,0 +1,38 @@
+/usr/share/vsscripts/
+adjust.py
+dehalo_alpha.py
+edgecleaner.py
+fastlinedarken.py
+finesharp.py
+havsfunc.py
+hdr2sdr.py
+knlm.py
+MaskDetail.py
+mcdegrainsharp.py
+MCDenoise.py
+mpls.py
+muvsfunc_numpy.py
+muvsfunc.py
+mvsfunc.py
+nnedi3_resample.py
+nnedi3_rpow2.py
+psharpen.py
+rangeutils.py
+resamplehq.py
+scoll.py
+sharpaamcmod.py
+showdiff.py
+supersampledantialiasing.py
+temporalsoften2.py
+VAutoDeint.py
+vshelpers.py
+vsTAAmbk.py
+
+Building FFMS2:
+git clone git://github.com/FFMS/ffms2.git
+cd ffms2
+./configure --enable-shared --with-pic
+make
+    sudo checkinstall --pkgname=ffms2 --pkgversion="1:$(./version.sh)-git" \
+    --backup=no --deldoc=yes --delspec=yes --deldesc=yes --strip=yes \
+    --stripso=yes --addso=yes --fstrans=no --default

@@ -1,6 +1,8 @@
 Vagrant.configure(2) do |config|
    # public boxes maintained by ubuntu: https://app.vagrantup.com/ubuntu
-   config.vm.box = "ubuntu/xenial64"
+   # config.vm.box = "ubuntu/xenial64"
+   config.vm.box = "peru/ubuntu-18.04-desktop-amd64"
+   config.vm.box_version = "20190901.01"   
    config.vm.boot_timeout = 600
 
    # https://www.vagrantup.com/docs/vagrantfile/machine_settings.html
@@ -21,44 +23,58 @@ Vagrant.configure(2) do |config|
  # https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant/1277604#1277604
   	# zimg dependencies
 	config.vm.provision :shell do |s|
-	   s.path = 'install-zimg-libs.sh'
+	   s.path = 'scripts/install-zimg-libs.sh'
 	   s.name = 'zimg-libs'
 	   s.privileged = true
 	end
 
   	# zimg installation
 	config.vm.provision :shell do |s|
-	   s.path = 'install-zimg.sh'
+	   s.path = 'scripts/install-zimg.sh'
 	   s.name = 'zimg'
 	   s.privileged = false
 	end
 
    # vsynth dependencies
 	config.vm.provision :shell do |s|
-	   s.path = 'install-vsynth-libs.sh'
+	   s.path = 'scripts/install-vsynth-libs.sh'
 	   s.name = 'vsynth-libs'
 	   s.privileged = true
 	end
 
    # vsynth installation
 	config.vm.provision :shell do |s|
-	   s.path = 'install-vsynth.sh'
+	   s.path = 'scripts/install-vsynth.sh'
 	   s.name = 'vsynth'
 	   s.privileged = false
 	end
 
    # vsedit dependencies
 	config.vm.provision :shell do |s|
-	   s.path = 'install-vsedit-libs.sh'
+	   s.path = 'scripts/install-vsedit-libs.sh'
 	   s.name = 'vsedit-libs'
 	   s.privileged = true
 	end
 
    # vsedit installation
 	config.vm.provision :shell do |s|
-	   s.path = 'install-vsedit.sh'
+	   s.path = 'scripts/install-vsedit.sh'
 	   s.name = 'vsedit'
 	   s.privileged = false
 	end   
+
+   # d2vwitch dependencies
+	config.vm.provision :shell do |s|
+	   s.path = 'scripts/install-d2vwitch-libs.sh'
+	   s.name = 'd2vwitch-libs'
+	   s.privileged = true
+	end
+
+   # d2vwitch installation
+	config.vm.provision :shell do |s|
+	   s.path = 'scripts/install-d2vwitch.sh'
+	   s.name = 'd2vwitch'
+	   s.privileged = false
+	end 
 
 end

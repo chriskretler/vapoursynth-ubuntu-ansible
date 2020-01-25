@@ -29,6 +29,7 @@ if echo "$vsversion" | grep -q $version; then
 else
    echo "Installing vsynth"
    cd ~/installs/vapoursynth \
+      && git checkout $version \
 	   && ./autogen.sh \
 	   && ./configure \
 	   && make \
