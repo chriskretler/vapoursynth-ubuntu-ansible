@@ -18,12 +18,13 @@ if [ -d ~/installs/vapoursynth ]; then
 
 else
    echo "vapoursynth directory does not exist. Cloning repo."
+   mkdir -p ~/installs/
    cd ~/installs/
    git clone https://github.com/vapoursynth/vapoursynth.git
 fi
 
 # need to do this in bash, for some reason it works fine from the cmd line
-vsversion=`PYTHONPATH=/usr/local/lib/python3.5/site-packages vspipe --version`
+vsversion=`PYTHONPATH=/usr/local/lib/python3.6/site-packages vspipe --version`
 if echo "$vsversion" | grep -q $version; then
    echo "Current version of vsynth is already installed."
 else
@@ -35,7 +36,7 @@ else
 	   && make \
 	   && sudo make install \
       && mkdir -p ~/.config/vapoursynth \
-	   && echo 'export PYTHONPATH=/usr/local/lib/python3.5/site-packages/' | tee --append ~/.bashrc \
+	   && echo 'export PYTHONPATH=/usr/local/lib/python3.6/site-packages/' | tee --append ~/.bashrc \
       && echo 'UserPluginDir=/usr/local/lib' | tee --append ~/.config/vapoursynth/vapoursynth.conf \
 	   && echo 'include /usr/local/lib' | sudo tee --append /etc/ld.so.conf \
 	   && sudo ldconfig

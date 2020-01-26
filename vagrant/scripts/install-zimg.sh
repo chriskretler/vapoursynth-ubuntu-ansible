@@ -18,6 +18,7 @@ if [ -d ~/installs/zimg ]; then
 
 else
    echo "zimg directory does not exist. Cloning repo."
+   mkdir -p ~/installs/
    cd ~/installs/
    git clone https://github.com/sekrit-twc/zimg.git
 fi
