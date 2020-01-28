@@ -21,3 +21,11 @@ https://github.com/boxcutter/ubuntu/blob/master/ubuntu1604-desktop.json
 and
 
 https://github.com/boxcutter/ubuntu/blob/master/ubuntu.json#L152
+
+# 1/28/2020: works on mac os from default box-cutter repo:
+$ packer -version
+1.5.1
+
+$ packer build -var-file=ubuntu1804-desktop.json ubuntu.json
+...
+--> virtualbox-iso: 'virtualbox' provider box: box/virtualbox/ubuntu1804-desktop-0.1.0.box
