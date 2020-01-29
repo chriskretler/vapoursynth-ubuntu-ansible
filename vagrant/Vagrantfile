@@ -6,28 +6,26 @@ class VagrantPlugins::ProviderVirtualBox::Action::Network
 end
 
 Vagrant.configure(2) do |config|
-   # public boxes maintained by ubuntu: https://app.vagrantup.com/ubuntu
-   # config.vm.box = "ubuntu/xenial64"
-   config.vm.box = "peru/ubuntu-18.04-desktop-amd64"
-   config.vm.box_version = "20190901.01"
+   # Provision box per Packer instructions in readme
+   config.vm.box = "ubuntu1804-desktop"
    config.vm.boot_timeout = 600
 
    # https://www.vagrantup.com/docs/vagrantfile/machine_settings.html
 	config.vm.provider 'virtualbox' do |vb|
-    vb.name = "vapoursynth-vbox"
-		vb.gui = true
-		vb.customize ["modifyvm", :id, "--cpus", 2]
+      vb.name = "vapoursynth-vbox"
+      vb.gui = true
+		vb.customize ["modifyvm", :id, "--cpus", 4]
 		vb.customize ["modifyvm", :id, "--memory", 4096]
 		vb.customize ["modifyvm", :id, "--vram", "256"]
 		vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
 		vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
 		vb.customize ["modifyvm", :id, "--pae", "off"]
-    #for vbox 6.x need to enable clipboard-mode, 5.x uses clipboard
-    # https://github.com/hashicorp/vagrant/issues/11288
-    #vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
-    #vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
-    vb.customize ["setextradata", "global", "GUI/MaxGuestResolution", "any"]
-    vb.customize ["setextradata", :id, "CustomVideoMode1", "1024x768x32"]
+      #for vbox 6.x need to enable clipboard-mode, 5.x uses clipboard
+      # https://github.com/hashicorp/vagrant/issues/11288
+      #vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+      vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      vb.customize ["setextradata", "global", "GUI/MaxGuestResolution", "any"]
+      vb.customize ["setextradata", :id, "CustomVideoMode1", "1024x768x32"]
 	end
 
  # https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant/1277604#1277604
@@ -44,6 +42,13 @@ Vagrant.configure(2) do |config|
 	   s.name = 'zimg'
 	   s.privileged = false
 	end
+	
+  	# ffmpeg installation
+	config.vm.provision :shell do |s|
+	   s.path = 'scripts/install-ffmpeg.sh'
+	   s.name = 'ffmpeg'
+	   s.privileged = false
+	end	
 
    # vsynth dependencies
 	config.vm.provision :shell do |s|

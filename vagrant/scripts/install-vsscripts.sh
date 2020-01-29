@@ -28,6 +28,7 @@ fi
 
 cd ~/installs/havsfunc \
    && git checkout $havsfunc_tag \
+   && sudo mkdir -p /usr/share/vsscripts \
    && sudo cp havsfunc.py /usr/share/vsscripts/
 
 
@@ -55,6 +56,7 @@ fi
 
 cd ~/installs/mvsfunc \
    && git checkout $mvsfunc_tag \
+   && sudo mkdir -p /usr/share/vsscripts \   
    && sudo cp mvsfunc.py /usr/share/vsscripts/
    
    
@@ -82,4 +84,5 @@ fi
 
 cd ~/installs/vapoursynth-adjust \
    && git checkout $adjust_tag \
+   && sudo mkdir -p /usr/share/vsscripts \   
    && sudo cp adjust.py /usr/share/vsscripts/

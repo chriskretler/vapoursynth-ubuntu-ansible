@@ -5,7 +5,7 @@ Type=Application
 Name=VapourSynth Editor
 Icon=vsedit
 Path=/home/chris/.local/share/applications
-Exec=bash -c "export PYTHONPATH=/usr/local/lib/python3.5/site-packages && vsedit"
+Exec=bash -c "export PYTHONPATH=/usr/local/lib/python3.6/site-packages && vsedit"
 StartupNotify=false
 StartupWMClass=vsedit
 OnlyShowIn=Unity;
