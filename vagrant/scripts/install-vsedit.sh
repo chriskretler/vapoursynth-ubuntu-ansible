@@ -12,7 +12,7 @@ install_vsedit() {
 	   && mv ../build/release-64bit-gcc ~/Applications/VapourSynth-Editor \
 	   && sudo ln -s ~/Applications/VapourSynth-Editor/vsedit /usr/bin/vsedit \
 	   && mkdir -p ~/.local/share/applications \
-      && cp ~/vsedit.desktop ~/.local/share/applications
+      && cp /vagrant/vsedit.desktop ~/.local/share/applications
 }
 
 
@@ -31,7 +31,7 @@ if [ -d ~/installs/vapoursynth-editor ]; then
    fi
 
 else
-   echo "vapoursynth directory does not exist. Cloning repo."
+   echo "vsedit directory does not exist. Cloning repo."
    mkdir -p ~/installs/
    cd ~/installs/
    git clone https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
