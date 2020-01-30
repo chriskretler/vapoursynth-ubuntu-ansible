@@ -48,3 +48,10 @@ vagrant reload --provision-with shell
 
 # To shut-down a vagrant machine
 vagrant halt
+
+
+###################################
+## Problems with compilation? #####
+###################################
+Look for libraries and paths in this thread:
+https://forum.doom9.org/showthread.php?t=175522
