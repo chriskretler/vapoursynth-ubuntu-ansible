@@ -7,7 +7,7 @@ export adjust_tag=v1
 ### havsfunc ############
 # Does the havsfunc source code directory exist?
 if [ -d ~/installs/havsfunc ]; then
-   echo "switching to existing vapoursynth directory."
+   echo "switching to existing havsfunc directory."
    cd ~/installs/havsfunc
    
    # do we have the current source code?
@@ -33,9 +33,9 @@ cd ~/installs/havsfunc \
 
 
 ### mvsfunc ##############  
-# Does the havsfunc source code directory exist?
+# Does the mvsfunc source code directory exist?
 if [ -d ~/installs/mvsfunc ]; then
-   echo "switching to existing vapoursynth directory."
+   echo "switching to existing mvsfunc directory."
    cd ~/installs/mvsfunc
    
    # do we have the current source code?
@@ -56,14 +56,14 @@ fi
 
 cd ~/installs/mvsfunc \
    && git checkout $mvsfunc_tag \
-   && sudo mkdir -p /usr/share/vsscripts \   
+   && sudo mkdir -p /usr/share/vsscripts \
    && sudo cp mvsfunc.py /usr/share/vsscripts/
    
    
 ### adjust ##############  
 # Does the adjust source code directory exist?
 if [ -d ~/installs/vapoursynth-adjust ]; then
-   echo "switching to existing vapoursynth directory."
+   echo "switching to existing adjust directory."
    cd ~/installs/vapoursynth-adjust
    
    # do we have the current source code?
@@ -84,5 +84,5 @@ fi
 
 cd ~/installs/vapoursynth-adjust \
    && git checkout $adjust_tag \
-   && sudo mkdir -p /usr/share/vsscripts \   
+   && sudo mkdir -p /usr/share/vsscripts \
    && sudo cp adjust.py /usr/share/vsscripts/
