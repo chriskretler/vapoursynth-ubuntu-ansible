@@ -80,5 +80,12 @@ Vagrant.configure(2) do |config|
 	   s.name = 'vsscripts'
 	   s.privileged = false
 	end
+	
+   # install test files
+	config.vm.provision :shell do |s|
+	   s.path = 'scripts/install-test-files.sh'
+	   s.name = 'test-files'
+	   s.privileged = false
+	end
 
 end

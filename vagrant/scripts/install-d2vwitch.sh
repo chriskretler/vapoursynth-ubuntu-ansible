@@ -22,14 +22,14 @@ install_d2vwitch() {
          echo "source code is stale. Deleting so we can re-clone."
          cd ~/installs
          rm -rf D2VWitch
-         git clone --branch $version --depth 1 https://github.com/dubhater/D2VWitch.git
+         git clone --branch $current_tag --depth 1 https://github.com/dubhater/D2VWitch.git
       fi
 
    else
       echo "D2VWitch directory does not exist. Cloning repo."
       mkdir -p ~/installs/
       cd ~/installs/
-      git clone --branch $version --depth 1 https://github.com/dubhater/D2VWitch.git
+      git clone --branch $current_tag --depth 1 https://github.com/dubhater/D2VWitch.git
    fi
 
    cd ~/installs/D2VWitch \

@@ -1,10 +1,12 @@
+for qtgmc: nnedi3
+
 /usr/share/vsscripts/
-adjust.py
+x adjust.py
 dehalo_alpha.py
 edgecleaner.py
 fastlinedarken.py
 finesharp.py
-havsfunc.py
+x havsfunc.py
 hdr2sdr.py
 knlm.py
 MaskDetail.py
@@ -13,7 +15,7 @@ MCDenoise.py
 mpls.py
 muvsfunc_numpy.py
 muvsfunc.py
-mvsfunc.py
+x mvsfunc.py
 nnedi3_resample.py
 nnedi3_rpow2.py
 psharpen.py

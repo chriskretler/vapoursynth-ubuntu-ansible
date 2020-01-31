@@ -18,14 +18,14 @@ if [ -d ~/installs/d2vsource ]; then
       echo "source code is stale. Deleting so we can re-clone."
       cd ~/installs
       rm -rf d2vsource
-      git clone --branch $version --depth 1 https://github.com/dwbuiten/d2vsource
+      git clone --branch $current_tag --depth 1 https://github.com/dwbuiten/d2vsource
    fi
 
 else
    echo "Directory does not exist. Cloning repo."
    mkdir -p ~/installs/
    cd ~/installs/
-   git clone --branch $version --depth 1 https://github.com/dwbuiten/d2vsource
+   git clone --branch $current_tag --depth 1 https://github.com/dwbuiten/d2vsource
 fi
 
 echo "Installing d2vsource"

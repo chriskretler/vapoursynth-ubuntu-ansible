@@ -44,6 +44,9 @@ install_vsedit() {
 
 # Cannot determine whether current version is installed via ssh,
 # as launching vsedit attempts to launch an X window.
+# It looks like that can be done:
+# https://askubuntu.com/questions/633782/how-to-start-x-application-from-ssh
+# but vsedit provides no information on the command line, doesn't support --version
 vsedit_path=`which vsedit`
 if echo "$vsedit_path" | grep -q "vsedit"; then
    echo "vsedit is already installed. Determining version."

@@ -1,0 +1,1 @@
+cp /vagrant/sample.vpy ~/
