@@ -12,11 +12,12 @@ $ packer -version
 $ git clone https://github.com/boxcutter/ubuntu
 $ cd ubuntu
 
+# Note: box-cutter's vagrant box does not support vbox 6.x as of 1/30/2020.
 $ packer build -var-file=ubuntu1804-desktop.json ubuntu.json
 ...
 --> virtualbox-iso: 'virtualbox' provider box: box/virtualbox/ubuntu1804-desktop-0.1.0.box
 
-$ sudo find / -type f -iname *.box
+`$ sudo find / -type f -iname *.box`
 /storage/code/ubuntu/box/virtualbox/ubuntu1804-desktop-0.1.0.box
 
 ################
@@ -28,7 +29,7 @@ sudo apt install vagrant
 # Add packer image
 $ vagrant box add /storage/code/ubuntu/box/virtualbox/ubuntu1804-desktop-0.1.0.box --name=ubuntu1804-desktop
 ==> box: Box file was not detected as metadata. Adding it directly...
-==> box: Adding box 'ubuntu1804-desktop' (v0) for provider: 
+==> box: Adding box 'ubuntu1804-desktop' (v0) for provider:
     box: Unpacking necessary files from: file:///storage/code/ubuntu/box/virtualbox/ubuntu1804-desktop-0.1.0.box
 ==> box: Successfully added box 'ubuntu1804-desktop' (v0) for 'virtualbox'!
 
@@ -48,6 +49,9 @@ vagrant reload --provision-with shell
 
 # To shut-down a vagrant machine
 vagrant halt
+
+# ioctl error
+https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant/1277604#1277604
 
 
 ###################################

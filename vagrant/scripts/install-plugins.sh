@@ -15,11 +15,12 @@ else
 fi
 
 sudo apt-get update \
-   && sudo apt-get install -y libsndfile libsndfile-dev
+   && sudo apt-get install -y libsndfile1 libsndfile1-dev
 
-cd ~/installs/ffmpeg \
+cd ~/installs/vapoursynth-damb \
    && git checkout $damb_version \
    && ./autogen.sh \
    && ./configure \
+   && make clean \
    && make \
    && sudo make install

@@ -2,6 +2,10 @@
 export DEBIAN_FRONTEND=noninteractive
 export version=release-2.9.2
 
+echo "Updating Ubuntu and Python libraries..."
+sudo apt-get update \
+   && sudo apt-get install -y autoconf automake libtool pkg-config build-essential python3-dev python-pip git
+
 # Does the source code directory exist?
 if [ -d ~/installs/zimg ]; then
    echo "switching to existing zimg directory."
@@ -29,5 +33,6 @@ cd ~/installs/zimg \
    && git checkout $version \
 	&& ./autogen.sh \
 	&& ./configure \
-	&& make \
+   && make clean \
+   && make \
 	&& sudo make install
