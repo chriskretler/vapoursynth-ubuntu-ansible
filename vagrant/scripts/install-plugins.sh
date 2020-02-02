@@ -4,6 +4,7 @@ export damb_version=v3
 export fmtc_version=r22
 export mvtools_version=v21
 export fft_version=master
+export nnedi3_version=v12
 
 ### vapoursynth-damb: audio support ###
 if [ -d ~/installs/vapoursynth-damb ]; then
@@ -91,3 +92,23 @@ cd ~/installs/VapourSynth-FFT3DFilter \
    && meson build \
    && ninja -C build \
    && sudo ninja -C build install
+   
+### nnedi3 ###
+if [ -d ~/installs/vapoursynth-nnedi3 ]; then
+   echo "switching to existing directory."
+   cd ~/installs/vapoursynth-nnedi3
+else
+   echo "nnedi3 directory does not exist. Cloning repo."
+   mkdir -p ~/installs/
+   cd ~/installs/
+   git clone https://github.com/dubhater/vapoursynth-nnedi3
+fi
+
+cd ~/installs/vapoursynth-nnedi3 \
+   && git checkout $nnedi3_version \
+   && ./autogen.sh \
+   && ./configure \
+   && make clean \
+   && make \
+   && sudo make install
+
