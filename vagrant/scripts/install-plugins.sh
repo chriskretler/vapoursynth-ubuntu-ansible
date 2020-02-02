@@ -58,7 +58,7 @@ else
    echo "mvtools directory does not exist. Cloning repo."
    mkdir -p ~/installs/
    cd ~/installs/
-   https://github.com/dubhater/vapoursynth-mvtools
+   git clone https://github.com/dubhater/vapoursynth-mvtools
 fi
 
 sudo apt-get update \
