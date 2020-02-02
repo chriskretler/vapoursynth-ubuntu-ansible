@@ -3,7 +3,7 @@ export DEBIAN_FRONTEND=noninteractive
 export damb_version=v3
 export fmtc_version=r22
 export mvtools_version=v21
-export fft_version=R1
+export fft_version=master
 
 ### vapoursynth-damb: audio support ###
 if [ -d ~/installs/vapoursynth-damb ]; then
@@ -84,7 +84,7 @@ else
 fi
 
 sudo apt-get update \
-   && sudo apt-get install -y meson ninja-build libfftw3-*
+   && sudo apt-get install -y meson ninja-build libfftw3-3 libfftw3-dev
 
 cd ~/installs/VapourSynth-FFT3DFilter \
    && git checkout $fft_version \
