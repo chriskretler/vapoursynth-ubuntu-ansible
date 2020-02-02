@@ -5,6 +5,7 @@ export fmtc_version=r22
 export mvtools_version=v21
 export fft_version=master
 export nnedi3_version=v12
+export znedi3_version=master
 
 ### vapoursynth-damb: audio support ###
 if [ -d ~/installs/vapoursynth-damb ]; then
@@ -92,7 +93,8 @@ cd ~/installs/VapourSynth-FFT3DFilter \
    && meson build \
    && ninja -C build \
    && sudo ninja -C build install
-   
+
+
 ### nnedi3 ###
 if [ -d ~/installs/vapoursynth-nnedi3 ]; then
    echo "switching to existing directory."
@@ -111,4 +113,22 @@ cd ~/installs/vapoursynth-nnedi3 \
    && make clean \
    && make \
    && sudo make install
+
+
+### znedi3 ###
+if [ -d ~/installs/znedi3 ]; then
+   echo "switching to existing directory."
+   cd ~/installs/znedi3
+else
+   echo "znedi3 directory does not exist. Cloning repo."
+   mkdir -p ~/installs/
+   cd ~/installs/
+   git clone --recursive https://github.com/sekrit-twc/znedi3
+fi
+
+cd ~/installs/znedi3 \
+   && git checkout $znedi3_version \
+   && make clean \
+   && make X86=1 \
+   && sudo cp nnedi3_weights.bin vsznedi3.so /usr/local/lib
 

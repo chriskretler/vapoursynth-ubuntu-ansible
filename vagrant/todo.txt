@@ -1,34 +1,12 @@
-for qtgmc: nnedi3
-
-/usr/share/vsscripts/
-x adjust.py
-dehalo_alpha.py
-edgecleaner.py
-fastlinedarken.py
-finesharp.py
-x havsfunc.py
-hdr2sdr.py
-knlm.py
-MaskDetail.py
-mcdegrainsharp.py
-MCDenoise.py
-mpls.py
-muvsfunc_numpy.py
-muvsfunc.py
-x mvsfunc.py
-nnedi3_resample.py
-nnedi3_rpow2.py
-psharpen.py
-rangeutils.py
-resamplehq.py
-scoll.py
-sharpaamcmod.py
-showdiff.py
-supersampledantialiasing.py
-temporalsoften2.py
-VAutoDeint.py
-vshelpers.py
-vsTAAmbk.py
+qtgmc:
+   - 2/1/2020: currently corrupting video
+   - filters that appear to be working correctly:
+      - d2vsource
+      - mvtools
+      - nnedi3
+      - znedi3
+      - fft3dfilter
+      - repair
 
 Building FFMS2:
 git clone git://github.com/FFMS/ffms2.git
