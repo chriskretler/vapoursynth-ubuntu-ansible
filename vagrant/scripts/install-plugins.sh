@@ -1,6 +1,8 @@
 #!/bin/bash -x
 export DEBIAN_FRONTEND=noninteractive
 export damb_version=v3
+# DFT: starting with 4.1, requires meson v48. ubuntu 18.04 only provides 45.1
+export dft_version=r4
 export fmtc_version=r22
 export mvtools_version=v21
 export fft_version=master
@@ -132,3 +134,25 @@ cd ~/installs/znedi3 \
    && make X86=1 \
    && sudo cp nnedi3_weights.bin vsznedi3.so /usr/local/lib
 
+
+### DFTTest ###
+if [ -d ~/installs/VapourSynth-DFTTest ]; then
+   echo "switching to existing directory."
+   cd ~/installs/VapourSynth-DFTTest
+else
+   echo "DFTTest directory does not exist. Cloning repo."
+   mkdir -p ~/installs/
+   cd ~/installs/
+   git clone https://github.com/HomeOfVapourSynthEvolution/VapourSynth-DFTTest
+fi
+
+sudo apt-get update \
+   && sudo apt-get install -y libfftw3-3 libfftw3-dev
+
+cd ~/installs/VapourSynth-DFTTest \
+   && git checkout $dft_version \
+   && ./autogen.sh \
+   && ./configure \
+   && make clean \
+   && make \
+   && sudo make install
