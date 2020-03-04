@@ -59,3 +59,10 @@ https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriat
 ###################################
 Look for libraries and paths in this thread:
 https://forum.doom9.org/showthread.php?t=175522
+
+
+################
+## Ansible #####
+################
+#To install ansible:
+sudo apt install ansible

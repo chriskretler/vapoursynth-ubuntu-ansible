@@ -1,6 +1,8 @@
 #!/bin/bash -x
 export DEBIAN_FRONTEND=noninteractive
-export version=R48
+# R48 results in qtgmc issues with my AMD phenom 2 1060T processor,
+# probably due to processor age.
+export version=R47.2
 
 install_vsynth() {
 

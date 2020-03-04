@@ -1,0 +1,10 @@
+---
+- name: Install zimg
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: install autoconf 
+      apt:
+        name: autoconf
+        state: present
