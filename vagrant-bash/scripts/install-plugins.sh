@@ -4,6 +4,7 @@ export damb_version=v3
 # DFT: starting with 4.1, requires meson v48. ubuntu 18.04 only provides 45.1
 export dft_version=r4
 export fmtc_version=r22
+export ffms2_version=master
 export mvtools_version=v21
 export fft_version=master
 export nnedi3_version=v12
@@ -31,7 +32,7 @@ cd ~/installs/vapoursynth-damb \
    && make \
    && sudo make install
 
-   
+
 ### fmtc ###
 if [ -d ~/installs/fmtconv ]; then
    echo "switching to existing directory."
@@ -52,7 +53,27 @@ cd ~/installs/fmtconv \
    && make \
    && sudo make install
 
-   
+
+### ffms2 ###
+if [ -d ~/installs/ffms2 ]; then
+  echo "switching to existing directory."
+  cd ~/installs/ffms2
+else
+  echo "ffms2 directory does not exist. Cloning repo."
+  mkdir -p ~/installs/
+  cd ~/installs/
+  git clone https://github.com/FFMS/ffms2.git
+fi
+
+cd ~/installs/ffms2 \
+  && git checkout $ffms2_version \
+  && ./autogen.sh \
+  && ./configure \
+  && make clean \
+  && make \
+  && sudo make install
+
+
 ### mvtools ###
 if [ -d ~/installs/vapoursynth-mvtools ]; then
    echo "switching to existing directory."
