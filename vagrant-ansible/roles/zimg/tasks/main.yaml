@@ -1,58 +1,14 @@
 ---
-- name: Update package cache
-  apt:
-    update_cache: yes
-  become: true
+- name: install packages
+  import_tasks: install_packages.yaml
 
-- name: Install autoconf
-  apt:
-    name: autoconf
-    state: present
-  become: true
+- set_fact:
+    repo: https://github.com/sekrit-twc/zimg.git
+    tag: "{{ zimg_version }}"
+    install_directory: "{{ home_directory }}/installs/zimg"
 
-- name: Install automake
-  apt:
-    name: automake
-    state: present
-  become: true
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
 
-- name: Install libtool
-  apt:
-    name: libtool
-    state: present
-  become: true
-
-- name: Install pkg-config
-  apt:
-    name: pkg-config
-    state: present
-  become: true
-
-- name: Install build-essential
-  apt:
-    name: build-essential
-    state: present
-  become: true
-
-- name: Install python3-dev
-  apt:
-    name: python3-dev
-    state: present
-  become: true
-
-- name: Install python-pip
-  apt:
-    name: python-pip
-    state: present
-  become: true
-
-- name: Install git
-  apt:
-    name: git
-    state: present
-  become: true
-
-- name: Verify installation directory
-  file:
-    path: ~/installs/zimg
-    state: directory
+- name: install zimg
+  import_tasks: install_zimg.yaml

@@ -1,0 +1,9 @@
+# https://docs.ansible.com/ansible/latest/modules/git_module.html
+- name: clone repo
+  git:
+    clone: yes
+    force: yes
+    repo: "{{ repo }}"
+    update: yes
+    version: "{{ tag }}"
+    dest: "{{ install_directory }}"

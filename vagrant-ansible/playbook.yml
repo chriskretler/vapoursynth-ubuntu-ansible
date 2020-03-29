@@ -1,5 +1,7 @@
 ---
 - name: Install zimg
   hosts: default
+  vars_files:
+    - ./env.yaml
   roles:
     - zimg

@@ -1,0 +1,17 @@
+---
+- name: zimg - autogen configure make
+  command: "{{ item }}"
+  args:
+    chdir: "{{ install_directory }}"
+  with_items:
+    - ./autogen.sh
+    - ./configure
+    - make clean
+    - make
+  become: false
+
+- name: zimg - make install
+  command: make install
+  args:
+    chdir: "{{ install_directory }}"
+  become: true
