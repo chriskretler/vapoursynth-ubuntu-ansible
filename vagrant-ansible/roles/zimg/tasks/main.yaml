@@ -4,7 +4,7 @@
 
 - set_fact:
     repo: https://github.com/sekrit-twc/zimg.git
-    tag: "{{ zimg_version }}"
+    tag: "{{ zimg_desired_version }}"
     install_directory: "{{ home_directory }}/installs/zimg"
 
 - name: update git status

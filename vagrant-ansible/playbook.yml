@@ -5,3 +5,17 @@
     - ./env.yaml
   roles:
     - zimg
+
+- name: Install ffmpeg
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - ffmpeg
+
+- name: Install vapoursynth
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - vapoursynth

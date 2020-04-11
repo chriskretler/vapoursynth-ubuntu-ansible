@@ -1,0 +1,35 @@
+---
+- name: Update package cache
+  apt:
+    update_cache: yes
+  become: true
+
+- name: Install nasm
+  apt:
+    name: nasm
+    state: present
+  become: true
+
+- name: Install yasm
+  apt:
+    name: yasm
+    state: present
+  become: true
+
+- name: Install libx264-dev
+  apt:
+    name: libx264-dev
+    state: present
+  become: true
+
+- name: Install libx264-152
+  apt:
+    name: libx264-152
+    state: present
+  become: true
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+  become: true

@@ -1,0 +1,66 @@
+---
+- name: Update package cache
+  apt:
+    update_cache: yes
+  become: true
+
+- name: Install autoconf
+  apt:
+    name: autoconf
+    state: present
+  become: true
+
+- name: Install automake
+  apt:
+    name: automake
+    state: present
+  become: true
+
+- name: Install libtool
+  apt:
+    name: libtool
+    state: present
+  become: true
+
+- name: Install pkg-config
+  apt:
+    name: pkg-config
+    state: present
+  become: true
+
+- name: Install build-essential
+  apt:
+    name: build-essential
+    state: present
+  become: true
+
+- name: Install python3-dev
+  apt:
+    name: python3-dev
+    state: present
+  become: true
+
+- name: Install python3-pip
+  apt:
+    name: python3-pip
+    state: present
+  become: true
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+  become: true
+
+- name: Install cython3
+  apt:
+    name: cython3
+    state: present
+  become: true
+
+- name: pip install cython3
+  pip:
+    name: cython
+    extra_args: --user
+    executable: pip3   
+  become: false
