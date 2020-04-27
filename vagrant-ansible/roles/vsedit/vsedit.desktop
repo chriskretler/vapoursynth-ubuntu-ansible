@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=VapourSynth Editor
+Icon=~/Applications/VapourSynth-Editor/vsedit.ico
+Path=~/.local/share/applications
+Exec=bash -c "export PYTHONPATH=/usr/local/lib/python3.6/site-packages && vsedit"
+StartupNotify=false
+StartupWMClass=vsedit

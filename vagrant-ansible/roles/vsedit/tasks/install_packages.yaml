@@ -1,0 +1,59 @@
+---
+- name: Update package cache
+  apt:
+    update_cache: yes
+  become: true
+
+- name: Install autoconf
+  apt:
+    name: autoconf
+    state: present
+  become: true
+
+- name: Install automake
+  apt:
+    name: automake
+    state: present
+  become: true
+
+- name: Install libtool
+  apt:
+    name: libtool
+    state: present
+  become: true
+
+- name: Install pkg-config
+  apt:
+    name: pkg-config
+    state: present
+  become: true
+
+- name: Install build-essential
+  apt:
+    name: build-essential
+    state: present
+  become: true
+
+- name: Install python3-dev
+  apt:
+    name: python3-dev
+    state: present
+  become: true
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+  become: true
+
+- name: Install qt5-default
+  apt:
+    name: qt5-default
+    state: present
+  become: true
+
+- name: Install libqt5websockets5-dev
+  apt:
+    name: libqt5websockets5-dev
+    state: present
+  become: true
