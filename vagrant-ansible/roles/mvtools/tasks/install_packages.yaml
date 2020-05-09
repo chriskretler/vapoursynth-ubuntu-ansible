@@ -1,0 +1,14 @@
+---
+- name: Update package cache
+  apt:
+    update_cache: yes
+  become: true
+
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libfftw3-3
+    - libfftw3-dev
+  become: true
