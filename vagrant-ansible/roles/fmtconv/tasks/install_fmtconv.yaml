@@ -1,0 +1,17 @@
+---
+- name: autogen configure make
+  command: "{{ item }}"
+  args:
+    chdir: "{{ install_directory }}/build/unix"
+  with_items:
+    - ./autogen.sh
+    - ./configure
+    - make clean
+    - make
+  become: false
+
+- name: make install
+  command: make install
+  args:
+    chdir: "{{ install_directory }}/build/unix"
+  become: true
