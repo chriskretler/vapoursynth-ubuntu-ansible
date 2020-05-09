@@ -38,12 +38,12 @@
     - ./env.yaml
   roles:
     - d2vwitch
-#
-# - name: Install d2vsource
-#   hosts: default
-#   vars_files:
-#     - ./env.yaml
-#   roles:
-#     - d2vsource
 
-# d2vsource, plugins (damb, fmtconv, ffms2, mvtools, fft3dfilter, nnedi3, znedi3, dfttest, bm3d), vsscripts, test-files
+- name: Install d2vsource
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - d2vsource
+
+# plugins (damb, fmtconv, ffms2, mvtools, fft3dfilter, nnedi3, znedi3, dfttest, bm3d), vsscripts, test-files
