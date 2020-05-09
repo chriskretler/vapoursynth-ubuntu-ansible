@@ -59,4 +59,11 @@
     - ./env.yaml
   roles:
     - fmtconv
-# ffms2, mvtools, fft3dfilter, nnedi3, znedi3, dfttest, bm3d), vsscripts, test-files
+
+- name: Install ffms2
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - ffms2
+# mvtools, fft3dfilter, nnedi3, znedi3, dfttest, bm3d), vsscripts, test-files
