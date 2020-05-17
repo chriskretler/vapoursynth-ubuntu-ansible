@@ -1,11 +1,11 @@
 ---
 - name: what vapoursynth version is currrently installed?
-  shell: PYTHONPATH=/usr/local/lib/python3.6/site-packages vspipe --version
+  shell: PYTHONPATH=/usr/local/lib/python3.6/site-packages vspipe --version | sed -n 3p | cut -d " " -f 2
   register: vapoursynth_current_version
   ignore_errors: True
 
-# - debug:
-#     var: '"not found" in vapoursynth_current_version.stderr'
+- debug:
+    var: vapoursynth_current_version.stdout
 - debug:
     var: vapoursynth_desired_version > vapoursynth_current_version.stdout
 

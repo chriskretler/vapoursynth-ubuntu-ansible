@@ -1,3 +1,9 @@
+why does fmtc namespace fail in vbox?
+
+vapoursynth_tag: v50
+
+mvtools_tag: v22
+
 breakout plugins and scripts into separate groups of roles and places in the playbook.
 
 plugins needing meson 48:
