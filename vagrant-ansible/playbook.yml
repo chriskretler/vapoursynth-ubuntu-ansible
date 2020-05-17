@@ -109,4 +109,16 @@
   roles:
     - bm3d
 
-# vsscripts, test-files
+- name: Install scripts
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - scripts
+
+- name: Install sample files
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - sample-files

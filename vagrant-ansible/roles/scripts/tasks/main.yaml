@@ -1,0 +1,51 @@
+---
+- name: create script directory
+  file:
+    path: "/usr/share/vsscripts"
+    state: directory
+  become: true
+
+### Install havsfunc
+- set_fact:
+    repo: https://github.com/HomeOfVapourSynthEvolution/havsfunc
+    tag: "{{ havsfunc_tag }}"
+    install_directory: "{{ home_directory }}/installs/havsfunc"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install havsfunc
+  command: cp havsfunc.py /usr/share/vsscripts/
+  args:
+    chdir: "{{ install_directory }}"
+  become: true
+
+### Install mvsfunc
+- set_fact:
+    repo: https://github.com/HomeOfVapourSynthEvolution/mvsfunc
+    tag: "{{ mvsfunc_tag }}"
+    install_directory: "{{ home_directory }}/installs/mvsfunc"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install mvsfunc
+  command: cp mvsfunc.py /usr/share/vsscripts/
+  args:
+    chdir: "{{ install_directory }}"
+  become: true
+
+### Install adjust
+- set_fact:
+    repo: https://github.com/dubhater/vapoursynth-adjust
+    tag: "{{ adjust_tag }}"
+    install_directory: "{{ home_directory }}/installs/vapoursynth-adjust"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install adjust
+  command: cp adjust.py /usr/share/vsscripts/
+  args:
+    chdir: "{{ install_directory }}"
+  become: true

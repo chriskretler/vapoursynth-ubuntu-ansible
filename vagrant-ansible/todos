@@ -1,0 +1,6 @@
+breakout plugins and scripts into separate groups of roles and places in the playbook.
+
+plugins needing meson 48:
+ - dfttest
+ - bm3d
+ - could install meson 48 in ubuntu 18.04 via pip.
