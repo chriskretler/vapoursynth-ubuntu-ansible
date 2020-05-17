@@ -1,0 +1,3 @@
+plugins needing meson 48:
+ - dfttest
+ - bm3d

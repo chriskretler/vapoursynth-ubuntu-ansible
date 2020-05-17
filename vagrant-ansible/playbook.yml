@@ -81,4 +81,32 @@
   roles:
     - fft3dfilter
 
-# nnedi3, znedi3, dfttest, bm3d, vsscripts, test-files
+- name: Install nnedi3
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - nnedi3
+
+- name: Install znedi3
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - znedi3
+
+- name: Install dfttest
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - dfttest
+
+- name: Install bm3d
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - bm3d
+
+# vsscripts, test-files
