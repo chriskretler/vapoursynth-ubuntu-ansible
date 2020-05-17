@@ -74,4 +74,11 @@
   roles:
     - mvtools
 
-# fft3dfilter, nnedi3, znedi3, dfttest, bm3d, vsscripts, test-files
+- name: Install fft3dfilter
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - fft3dfilter
+
+# nnedi3, znedi3, dfttest, bm3d, vsscripts, test-files
