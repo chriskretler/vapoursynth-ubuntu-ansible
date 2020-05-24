@@ -10,21 +10,22 @@ Vagrant.configure(2) do |config|
    config.vm.box = "ubuntu1804-desktop"
    config.vm.boot_timeout = 600
 
-   # # https://www.vagrantup.com/docs/vagrantfile/machine_settings.html
-   # config.vm.provider 'virtualbox' do |vb|
-   #    vb.name = "vsynth-ansible-vbox"
-   #    vb.gui = true
-   #    vb.customize ["modifyvm", :id, "--cpus", 4]
-   #    vb.customize ["modifyvm", :id, "--memory", 4096]
-   #    vb.customize ["modifyvm", :id, "--vram", "256"]
-   #    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
-   #    vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
-   #    vb.customize ["modifyvm", :id, "--pae", "off"]
-   #    vb.customize ["setextradata", "global", "GUI/MaxGuestResolution", "any"]
-   #    vb.customize ["setextradata", :id, "CustomVideoMode1", "1024x768x32"]
-   # end
+   # https://www.vagrantup.com/docs/vagrantfile/machine_settings.html
+   config.vm.provider 'virtualbox' do |vb|
+      vb.name = "vsynth-ansible-vbox"
+      vb.gui = true
+      vb.customize ["modifyvm", :id, "--cpus", 4]
+      vb.customize ["modifyvm", :id, "--memory", 4096]
+      vb.customize ["modifyvm", :id, "--vram", "256"]
+      vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+      vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
+      vb.customize ["modifyvm", :id, "--pae", "off"]
+      vb.customize ["setextradata", "global", "GUI/MaxGuestResolution", "any"]
+      vb.customize ["setextradata", :id, "CustomVideoMode1", "1024x768x32"]
+   end
 
-  # zimg installation
+  # Playbook contains installation instructions for dependencies, vapoursynth
+  # plugins, utilities and scripts.
 	config.vm.provision "ansible" do |ans|
 	   ans.playbook  = 'playbook.yml'
      ans.inventory_path = 'hosts'

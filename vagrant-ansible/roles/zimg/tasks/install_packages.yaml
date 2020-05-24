@@ -4,50 +4,17 @@
     update_cache: yes
   become: true
 
-- name: Install autoconf
+- name: install packages
   apt:
-    name: autoconf
+    name: "{{ item }}"
     state: present
-  become: true
-
-- name: Install automake
-  apt:
-    name: automake
-    state: present
-  become: true
-
-- name: Install libtool
-  apt:
-    name: libtool
-    state: present
-  become: true
-
-- name: Install pkg-config
-  apt:
-    name: pkg-config
-    state: present
-  become: true
-
-- name: Install build-essential
-  apt:
-    name: build-essential
-    state: present
-  become: true
-
-- name: Install python3-dev
-  apt:
-    name: python3-dev
-    state: present
-  become: true
-
-- name: Install python-pip
-  apt:
-    name: python-pip
-    state: present
-  become: true
-
-- name: Install git
-  apt:
-    name: git
-    state: present
+  with_items:
+    - autoconf
+    - automake
+    - libtool
+    - pkg-config
+    - build-essential
+    - python3-dev
+    - git
+    - python-pip
   become: true

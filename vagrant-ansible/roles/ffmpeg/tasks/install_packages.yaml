@@ -4,32 +4,14 @@
     update_cache: yes
   become: true
 
-- name: Install nasm
+- name: install packages
   apt:
-    name: nasm
+    name: "{{ item }}"
     state: present
-  become: true
-
-- name: Install yasm
-  apt:
-    name: yasm
-    state: present
-  become: true
-
-- name: Install libx264-dev
-  apt:
-    name: libx264-dev
-    state: present
-  become: true
-
-- name: Install libx264-152
-  apt:
-    name: libx264-152
-    state: present
-  become: true
-
-- name: Install git
-  apt:
-    name: git
-    state: present
+  with_items:
+    - nasm
+    - yasm
+    - libx264-dev
+    - libx264-152
+    - git
   become: true

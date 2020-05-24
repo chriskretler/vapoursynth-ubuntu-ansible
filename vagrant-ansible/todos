@@ -1,4 +1,7 @@
-why does fmtc namespace fail in vbox?
+zimg and vapoursynth are installing different pip versions!!!
+
+what cython versions are necessary?
+  - https://unix.stackexchange.com/questions/519078/vapoursynth-installation-problems
 
 vapoursynth_tag: v50
 

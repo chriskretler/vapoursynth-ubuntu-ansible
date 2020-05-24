@@ -11,6 +11,7 @@ $ packer -version
 #### Building the ubuntu desktop for later use by vagrant:
 Note: box-cutter's vagrant box does not support vbox 6.x as of 1/30/2020.
 ```
+$ cd /storage/code/
 $ git clone https://github.com/boxcutter/ubuntu
 $ cd ubuntu
 $ packer build -var-file=ubuntu1804-desktop.json ubuntu.json
