@@ -1,0 +1,14 @@
+---
+# - name: install packages
+#   import_tasks: install_packages.yaml
+
+- set_fact:
+    repo: https://github.com/SAPikachu/flash3kyuu_deband
+    tag: "{{ f3kdb_tag }}"
+    install_directory: "{{ home_directory }}/installs/flash3kyuu_deband"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install f3kdb
+  import_tasks: install_f3kdb.yaml

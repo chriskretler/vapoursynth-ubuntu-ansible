@@ -109,6 +109,20 @@
   roles:
     - bm3d
 
+- name: Install histogram
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - histogram
+
+- name: Install f3kdb
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - f3kdb
+
 - name: Install scripts
   hosts: default
   vars_files:

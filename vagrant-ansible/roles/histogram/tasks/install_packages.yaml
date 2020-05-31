@@ -14,7 +14,4 @@
     - libtool
     - pkg-config
     - build-essential
-    - python3-dev
-    - git
-#    - python-pip
   become: true

@@ -1,7 +1,4 @@
-zimg and vapoursynth are installing different pip versions!!!
-
-what cython versions are necessary?
-  - https://unix.stackexchange.com/questions/519078/vapoursynth-installation-problems
+modify path to avoid this: sys.path.append(os.path.abspath(scriptPath))
 
 vapoursynth_tag: v50
 
