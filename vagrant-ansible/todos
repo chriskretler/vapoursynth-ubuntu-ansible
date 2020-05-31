@@ -1,7 +1,5 @@
 modify path to avoid this: sys.path.append(os.path.abspath(scriptPath))
 
-vapoursynth_tag: v50
-
 mvtools_tag: v22
 
 breakout plugins and scripts into separate groups of roles and places in the playbook.

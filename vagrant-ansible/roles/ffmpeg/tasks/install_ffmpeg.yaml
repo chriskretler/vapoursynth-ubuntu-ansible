@@ -1,32 +1,24 @@
 ---
-- name: ffmpeg - configure
-  command: ./configure --enable-gpl --enable-libx264 --enable-shared
+- name: autogen configure make
+  shell: "{{ item }}"
   args:
     chdir: "{{ install_directory }}"
+  with_items:
+    - ./configure --enable-gpl --enable-libx264 --enable-shared
+    - make clean
+    - make -j $(nproc)
   become: false
 
-- name: ffmpeg - make clean
-  command: make clean
-  args:
-    chdir: "{{ install_directory }}"
-  become: false
-
-- name: ffmpeg - make
-  command: make
-  args:
-    chdir: "{{ install_directory }}"
-  become: false
-
-- name: ffmpeg - make install
+- name: make install
   command: make install
   args:
     chdir: "{{ install_directory }}"
   become: true
 
-- name: ffmpeg - ldconfig
+# ldconfig fixes inability to find libavdevice from /usr/local/lib
+# path must be part of /etc/ld.so.conf
+- name: ldconfig
   command: ldconfig
   args:
     chdir: "{{ install_directory }}"
   become: true
-  # ldconfig fixes inability to find libavdevice from /usr/local/lib
-  # path must be part of /etc/ld.so.conf
