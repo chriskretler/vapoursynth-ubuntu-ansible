@@ -1,11 +1,4 @@
-import sys
-import os
 import vapoursynth as vs
-core = vs.get_core()
-
-# Import Scripts Folder
-scriptPath = '/usr/share/vsscripts'
-sys.path.append(os.path.abspath(scriptPath))
 import havsfunc as hf
 import mvsfunc as mf
 

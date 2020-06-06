@@ -9,6 +9,11 @@
     upgrade: dist
   become: true
 
+- name: Remove unused dependencies
+  apt:
+    autoremove: yes
+  become: true
+
 - name: Check on reboot
   register: reboot_required
   stat: path=/var/run/reboot-required
@@ -29,8 +34,3 @@
     delay: 5
     timeout: 300
   when: reboot_required.stat.exists
-
-- name: Remove unused dependencies
-  apt:
-    autoremove: yes
-  become: true

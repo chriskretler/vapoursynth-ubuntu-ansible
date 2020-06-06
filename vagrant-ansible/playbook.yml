@@ -4,6 +4,13 @@
   roles:
     - packages
 
+- name: Update paths
+  hosts: default
+  vars_files:
+    - ./env.yaml
+  roles:
+    - paths
+
 - name: Install zimg
   hosts: default
   vars_files:

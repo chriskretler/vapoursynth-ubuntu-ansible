@@ -16,20 +16,15 @@
     chdir: "{{ install_directory }}"
   become: true
 
+# Required for some plugins to load.
 - name: make config directory
   file:
     path: "{{ home_directory }}/.config/vapoursynth"
     state: directory
   become: false
 
-- name: set PYTHONPATH
-  shell: echo 'export PYTHONPATH=/usr/local/lib/python3.6/site-packages/' | tee --append "{{ home_directory }}/.bashrc"
-
 - name: create vapoursynth.conf
   shell: echo 'UserPluginDir=/usr/local/lib' | tee --append "{{ home_directory }}/.config/vapoursynth/vapoursynth.conf"
-
-- name: update ld.so.conf path
-  shell: echo 'include /usr/local/lib' | sudo tee --append /etc/ld.so.conf
 
 - name: ldconfig
   command: ldconfig
