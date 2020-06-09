@@ -1,15 +1,15 @@
 ---
-- name: Update packages
-  hosts: default
-  roles:
-    - packages
-
 - name: Update paths
   hosts: default
   vars_files:
     - ./env.yaml
   roles:
     - paths
+
+- name: Update packages
+  hosts: default
+  roles:
+    - packages
 
 - name: Install zimg
   hosts: default

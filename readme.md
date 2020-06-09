@@ -48,7 +48,6 @@ https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriat
 - Problems with vapoursynth compilation? Look for libraries and paths in this thread:
 https://forum.doom9.org/showthread.php?t=175522
 
-- "Failed to initialize Vapoursynth environment"
-  - Your environment can't read vapoursynth.so
-    - Set the PYTHONPATH variable to the location of vapoursynth.so
-    - Create a link to vapoursynth.so in python's standard path, like /usr/local/lib/python3.6/dist-packages/
+- "Failed to initialize Vapoursynth environment". Your environment can't read vapoursynth.so. Do one of the following:
+  - Set the PYTHONPATH variable to the location of vapoursynth.so
+  - Create a link to vapoursynth.so in python's standard path, like /usr/local/lib/python3.6/dist-packages/

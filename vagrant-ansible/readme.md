@@ -10,6 +10,12 @@
 4. mvtools_tag: v23
 5. Only set the env var file once for all roles in a playbook.
 
+#### Where are vapoursynth and the supporting scripts installed?
+Based on this: https://wiki.debian.org/Python#Deviations_from_upstream
+
+They have been put here: /usr/local/lib/{python 3 version}/site-packages
+
+
 #### Using ansible directly on vagrant box:
 $ export ANSIBLE_SSH_ARGS='-o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -o IdentityFile=/storage/code/vsynth-env-provisioning/vagrant-ansible/.vagrant/machines/default/virtualbox/private_key -o ControlMaster=auto -o ControlPersist=60s'
 

@@ -1,8 +1,9 @@
 ---
 # 6/6/2020: put this here instead of ~/.bashrc so it will work for things other than bash.
+# https://wiki.debian.org/EnvironmentVariables
 # pythonpath is required for vspipe and vsedit to find vapoursynth and scripts
 - name: is python path set?
-  shell: "grep {{ pythonpath }} /etc/environment"
+  shell: "grep {{ pythonpath }} /etc/profile.d/vapoursynth-paths.sh"
   register: python_path_set
   ignore_errors: True
 
@@ -15,10 +16,10 @@
 - name: Conditionally set PYTHONPATH
   block:
     - name: set PYTHONPATH
-      shell: echo 'PYTHONPATH="{{ pythonpath }}"' | sudo tee --append "/etc/environment"
+      shell: echo 'export PYTHONPATH="{{ pythonpath }}"' | sudo tee --append "/etc/profile.d/vapoursynth-paths.sh"
   when: "'{{ pythonpath }}' not in python_path_set.stdout"
 
-# ld.so.conf is required so vapoursynth can find plugins.
+# placing /usr/local/lib in ld.so.conf is required so vapoursynth can find plugins.
 - name: is ld_so_conf set?
   shell: 'grep /usr/local/lib /etc/ld.so.conf'
   register: ld_so_conf_set
