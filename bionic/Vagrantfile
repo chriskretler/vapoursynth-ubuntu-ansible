@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
   # plugins, utilities and scripts.
 	config.vm.provision "ansible" do |ans|
 	   ans.playbook  = 'ansible/install_all.yml'
-     ans.inventory_path = 'ansible/hosts'
+     ans.inventory_path = 'ansible/hosts_vagrant'
 	   ans.verbose   = 'v'
 	end
 
