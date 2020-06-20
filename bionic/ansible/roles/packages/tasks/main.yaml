@@ -14,23 +14,23 @@
     autoremove: yes
   become: true
 
-- name: Check on reboot
-  register: reboot_required
-  stat: path=/var/run/reboot-required
-  become: true
-
-# NOTE: reboot module is available in ansible 2.7.
-- name: Reboot if kernel changed
-  shell: reboot
-  async: 1
-  poll: 0
-  when: reboot_required.stat.exists
-
-# When using reboot module, this line will no longer be required.
-- name: Wait for the reboot to complete
-  wait_for_connection:
-    connect_timeout: 20
-    sleep: 5
-    delay: 5
-    timeout: 300
-  when: reboot_required.stat.exists
+# - name: Check on reboot
+#   register: reboot_required
+#   stat: path=/var/run/reboot-required
+#   become: true
+#
+# # NOTE: reboot module is available in ansible 2.7.
+# - name: Reboot if kernel changed
+#   shell: reboot
+#   async: 1
+#   poll: 0
+#   when: reboot_required.stat.exists
+#
+# # When using reboot module, this line will no longer be required.
+# - name: Wait for the reboot to complete
+#   wait_for_connection:
+#     connect_timeout: 20
+#     sleep: 5
+#     delay: 5
+#     timeout: 300
+#   when: reboot_required.stat.exists
