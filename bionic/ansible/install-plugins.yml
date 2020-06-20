@@ -8,6 +8,8 @@
 
 - name: Update packages
   hosts: default
+  vars_files:
+    - ./env.yaml
   roles:
     - packages
 

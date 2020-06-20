@@ -1,18 +1,28 @@
 ---
-- name: Update package cache
-  apt:
-    update_cache: yes
-  become: true
+- debug:
+    var: packages_checked
 
-- name: Upgrade all packages
-  apt:
-    upgrade: dist
-  become: true
+- name: update packages
+  block:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+      become: true
 
-- name: Remove unused dependencies
-  apt:
-    autoremove: yes
-  become: true
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+      become: true
+
+    - name: Remove unused dependencies
+      apt:
+        autoremove: yes
+      become: true
+  when: packages_checked != true
+
+- name: Set variable so we don't do this again
+  set_fact:
+    packages_checked: true
 
 # - name: Check on reboot
 #   register: reboot_required
