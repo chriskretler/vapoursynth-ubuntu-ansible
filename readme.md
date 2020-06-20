@@ -1,7 +1,7 @@
 ### Overview
-The goal of the software in this repository is to repeatably deploy vapoursynth on Ubuntu. It leverages packer and vagrant to build test environments, and both bash and ansible to deploy.
+Ansible playbooks for installing vapoursynth, it's dependencies, select plugins and scripts on Ubuntu 18.04. Packer and vagrant are used to build test environments.
 
-The bash and ansible scripts are designed to run within vagrant, but--once verified--can be run on a host desktop.
+The bash and ansible scripts are designed to run within vagrant, and on a host desktop.
 
 Specific instructions for building an ubuntu desktop vm using packer and adding it to vagrant can be found [here](https://github.com/chriskretler/vsynth-env-provisioning/tree/master/packer/readme.md).
 

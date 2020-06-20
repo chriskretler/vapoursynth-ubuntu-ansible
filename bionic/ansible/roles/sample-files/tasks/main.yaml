@@ -7,5 +7,5 @@
 
 - name: install sample script
   copy:
-    src: ../../../../sample-files/sample.vpy
+    src: ../../../../sample-script.vpy
     dest: "{{ home_directory }}/samples"

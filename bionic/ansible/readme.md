@@ -1,5 +1,7 @@
 #### To-Dos:
-1. breakout plugins and scripts into separate groups of roles and places in the playbook.
+x 1. breakout plugins and scripts into separate groups of roles and places in the playbook.
+  - set variable when ubuntu paths and packages have been updated so plugins playbook doesn't need to do this.
+  - remove reboot
 2. ansible running locally
 3. ubuntu 20.04
   - plugins needing meson >45:
@@ -9,6 +11,8 @@
    - could install meson 48 in ubuntu 18.04 via pip.
 4. mvtools_tag: v23
 5. Only set the env var file once for all roles in a playbook.
+6. One readme
+7. more instructive messages when ansible checks (like ld.so.conf) fail.
 
 #### Where are vapoursynth and the supporting scripts installed?
 Based on this: https://wiki.debian.org/Python#Deviations_from_upstream

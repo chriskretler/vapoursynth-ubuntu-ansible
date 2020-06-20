@@ -11,48 +11,6 @@
   roles:
     - packages
 
-- name: Install zimg
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - zimg
-
-- name: Install ffmpeg
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - ffmpeg
-
-- name: Install vapoursynth
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - vapoursynth
-
-- name: Install vsedit
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - vsedit
-
-- name: Install d2vwitch
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - d2vwitch
-
-- name: Install d2vsource
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - d2vsource
-
 - name: Install damb
   hosts: default
   vars_files:
@@ -129,17 +87,3 @@
     - ./env.yaml
   roles:
     - f3kdb
-
-- name: Install scripts
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - scripts
-
-- name: Install sample files
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - sample-files

@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
    # https://www.vagrantup.com/docs/vagrantfile/machine_settings.html
    config.vm.provider 'virtualbox' do |vb|
-      vb.name = "vsynth-ansible-vbox"
+      vb.name = "vapoursynth-ansible-bionic"
       vb.gui = true
       vb.customize ["modifyvm", :id, "--cpus", 4]
       vb.customize ["modifyvm", :id, "--memory", 4096]
@@ -27,8 +27,8 @@ Vagrant.configure(2) do |config|
   # Playbook contains installation instructions for dependencies, vapoursynth
   # plugins, utilities and scripts.
 	config.vm.provision "ansible" do |ans|
-	   ans.playbook  = 'playbook.yml'
-     ans.inventory_path = 'hosts'
+	   ans.playbook  = 'ansible/install-all.yml'
+     ans.inventory_path = 'ansible/hosts'
 	   ans.verbose   = 'v'
 	end
 
