@@ -11,19 +11,21 @@
 5. One readme
 6. more instructive messages when ansible checks (like ld.so.conf) fail.
 
-#### Where are vapoursynth and the supporting scripts installed?
-Based on this: https://wiki.debian.org/Python#Deviations_from_upstream
+##### Running playbooks locally:
+- `$ ansible-playbook -i ansible/hosts ansible/install_all.yml --ask-become-pass`
+- `$ ansible-playbook -i ansible/hosts ansible/install_plugins.yml --ask-become-pass`
 
-They have been put here: /usr/local/lib/{python 3 version}/site-packages
+##### Running playbook against running vagrant box. Note: the box must have been previosuly provisioned to use this command:
+$ export ANSIBLE_SSH_ARGS='-o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -o IdentityFile=.vagrant/machines/default/virtualbox/private_key -o ControlMaster=auto -o ControlPersist=60s'
 
+$ ansible-playbook --connection=ssh --extra-vars=ansible_user\=\'vagrant\' -i ansible/hosts ansible/install_plugins.yml
 
-#### Using ansible directly on vagrant box:
-$ export ANSIBLE_SSH_ARGS='-o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -o IdentityFile=/storage/code/vsynth-env-provisioning/vagrant-ansible/.vagrant/machines/default/virtualbox/private_key -o ControlMaster=auto -o ControlPersist=60s'
+##### FAQ
+1. Where are vapoursynth and the supporting scripts installed?
+  - They have been put here: /usr/local/lib/{your_python_3_version}/site-packages
+  - Based on this: https://wiki.debian.org/Python#Deviations_from_upstream
 
-$ ansible-playbook --connection=ssh --extra-vars=ansible_user\=\'vagrant\' -i hosts playbook.yml
-
-
-#### SSH key validation:
+2. SSH key validation:
 For VMs, ssh key validation isn't necessary as they're ephemeral, as such we've included the following line in an ansible.cfg file:
 
 [defaults]

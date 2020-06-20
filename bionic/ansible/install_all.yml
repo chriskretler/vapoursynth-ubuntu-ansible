@@ -56,7 +56,7 @@
     - d2vsource
 
 - name: Install plugins
-  import_playbook: install-plugins.yml
+  import_playbook: install_plugins.yml
 
 - name: Install scripts
   hosts: default

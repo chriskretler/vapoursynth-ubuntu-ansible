@@ -36,3 +36,13 @@
     - name: update ld_so_conf path
       shell: "echo 'include /usr/local/lib' | sudo tee --append '/etc/ld.so.conf'"
   when: "'/usr/local/lib' not in ld_so_conf_set.stdout"
+
+- name: where is your home directory?
+  shell: 'echo $HOME'
+  register: home_shell
+
+- set_fact:
+    home_directory: "{{ home_shell.stdout }}"
+
+- debug:
+    var: home_directory
