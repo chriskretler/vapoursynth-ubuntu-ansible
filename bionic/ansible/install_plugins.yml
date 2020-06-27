@@ -1,91 +1,21 @@
 ---
-- name: Update paths
+- name: Update paths and packages
   hosts: default
-  vars_files:
-    - ./env.yaml
   roles:
-    - paths
+    - common
 
-- name: Update packages
+- name: Install individual plugins
   hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - packages
-
-- name: Install damb
-  hosts: default
-  vars_files:
-    - ./env.yaml
   roles:
     - damb
-
-- name: Install fmtconv
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
+    - d2vsource    
     - fmtconv
-
-- name: Install ffms2
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - ffms2
-
-- name: Install mvtools
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - mvtools
-
-- name: Install fft3dfilter
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - fft3dfilter
-
-- name: Install nnedi3
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - nnedi3
-
-- name: Install znedi3
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - znedi3
-
-- name: Install dfttest
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - dfttest
-
-- name: Install bm3d
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - bm3d
-
-- name: Install histogram
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - histogram
-
-- name: Install f3kdb
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - f3kdb

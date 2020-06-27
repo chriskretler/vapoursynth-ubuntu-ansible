@@ -1,0 +1,6 @@
+---
+- name: update packages
+  import_tasks: update_packages.yaml
+
+- name: update paths
+  import_tasks: update_paths.yaml

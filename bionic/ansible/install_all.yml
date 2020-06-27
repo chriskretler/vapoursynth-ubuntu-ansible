@@ -1,73 +1,27 @@
 ---
-- name: Update paths
+- name: Update paths and packages
   hosts: default
-  vars_files:
-    - ./env.yaml
   roles:
-    - paths
-
-- name: Update packages
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - packages
-
-- name: Install zimg
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - zimg
-
-- name: Install ffmpeg
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - ffmpeg
+    - common
 
 - name: Install vapoursynth
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - vapoursynth
+  import_playbook: install_vapoursynth.yml
 
-- name: Install vsedit
+- name: Install utility applications
   hosts: default
-  vars_files:
-    - ./env.yaml
   roles:
     - vsedit
-
-- name: Install d2vwitch
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
     - d2vwitch
-
-- name: Install d2vsource
-  hosts: default
-  vars_files:
-    - ./env.yaml
-  roles:
-    - d2vsource
 
 - name: Install plugins
   import_playbook: install_plugins.yml
 
 - name: Install scripts
   hosts: default
-  vars_files:
-    - ./env.yaml
   roles:
     - scripts
 
 - name: Install sample files
   hosts: default
-  vars_files:
-    - ./env.yaml
   roles:
     - sample-files

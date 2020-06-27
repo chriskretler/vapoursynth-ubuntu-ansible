@@ -1,9 +1,4 @@
 ---
-- name: Update package cache
-  apt:
-    update_cache: yes
-  become: true
-
 - name: install packages
   apt:
     name: "{{ item }}"

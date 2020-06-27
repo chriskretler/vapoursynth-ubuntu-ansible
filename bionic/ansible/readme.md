@@ -2,6 +2,8 @@
 Run from /ansible directory<br>
 `$ ansible-playbook -i hosts_local install_all.yml --ask-become-pass`<br>
 or:<br>
+`$ ansible-playbook -i hosts_local install_vapoursynth.yml --ask-become-pass`<br>
+or:<br>
 `$ ansible-playbook -i hosts_local install_plugins.yml --ask-become-pass`
 
 #### Running playbook against running vagrant box.
@@ -33,8 +35,8 @@ This should not be used for persistent hosts.
 4. more instructive messages when ansible checks (like ld.so.conf) fail.
 5. ubuntu 20.04
   - plugins needing meson >45:
-   - dfttest
-   - bm3d
-   - mvtools
-   - could install meson 48 in ubuntu 18.04 via pip.
+  - dfttest
+  - bm3d
+  - mvtools
+  - could install meson 48 in ubuntu 18.04 via pip.
 6. mvtools_tag: v23

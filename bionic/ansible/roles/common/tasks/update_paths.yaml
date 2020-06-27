@@ -19,6 +19,9 @@
       shell: echo 'export PYTHONPATH="{{ pythonpath }}"' | sudo tee --append "/etc/profile.d/vapoursynth-paths.sh"
   when: "'{{ pythonpath }}' not in python_path_set.stdout"
 
+- set_fact:
+    pythonpath: "{{ pythonpath }}"  
+
 # placing /usr/local/lib in ld.so.conf is required so vapoursynth can find plugins.
 - name: is ld_so_conf set?
   shell: 'grep /usr/local/lib /etc/ld.so.conf'
