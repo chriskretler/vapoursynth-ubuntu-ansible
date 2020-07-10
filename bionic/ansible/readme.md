@@ -28,15 +28,12 @@ host_key_checking = False
 This should not be used for persistent hosts.
 
 #### To-Dos:
-1. Only set the env var file once for all roles in a playbook.
-2. Common spot for vars, in group_vars directory.
-  - https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html
-3. One readme
-4. more instructive messages when ansible checks (like ld.so.conf) fail.
-5. ubuntu 20.04
+1. ubuntu 20.04
   - plugins needing meson >45:
   - dfttest
   - bm3d
   - mvtools
   - could install meson 48 in ubuntu 18.04 via pip.
-6. mvtools_tag: v23
+2. One readme
+3. more instructive messages when ansible checks (like ld.so.conf) fail.
+4. mvtools_tag: v23
