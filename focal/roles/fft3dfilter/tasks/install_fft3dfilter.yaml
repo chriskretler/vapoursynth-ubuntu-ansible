@@ -1,0 +1,15 @@
+---
+- name: meson ninja
+  command: "{{ item }}"
+  args:
+    chdir: "{{ install_directory }}"
+  with_items:
+    - meson build
+    - ninja -C build
+  become: false
+
+- name: ninja install
+  command: ninja -C build install
+  args:
+    chdir: "{{ install_directory }}"
+  become: true

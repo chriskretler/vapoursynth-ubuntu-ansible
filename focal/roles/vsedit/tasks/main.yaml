@@ -1,0 +1,39 @@
+---
+# check for vsedit installation in addition to checking for version in changelog
+# to accommodate situations where we've cloned the repo but the install failed.
+- name: is vsedit binary on the path?
+  shell: which vsedit
+  register: vsedit_path
+  ignore_errors: True
+
+# vsedit latest version is at the top of the CHANGELOG file
+- name: what vsedit version is currrently installed?
+  shell: head -n 1 "{{ home_directory }}/Applications/VapourSynth-Editor/CHANGELOG"
+  register: vsedit_current_version
+  ignore_errors: True
+
+- debug:
+    var: vsedit_path.stdout
+
+- debug:
+    var: '"/usr/bin/vsedit" in vsedit_path.stdout'
+
+- debug:
+    var: vsedit_current_version.stdout
+
+- name: install latest vsedit
+  block:
+    - name: install packages
+      import_tasks: install_packages.yaml
+
+    - set_fact:
+        repo: https://bitbucket.org/mystery_keeper/vapoursynth-editor.git
+        tag: "{{ vsedit_desired_version }}"
+        install_directory: "{{ home_directory }}/installs/vapoursynth-editor"
+
+    - name: update git status
+      import_tasks: ../../git/tasks/main.yaml
+
+    - name: install vapoursynth-editor
+      import_tasks: install_vsedit.yaml
+  when: (vsedit_desired_version not in vsedit_current_version.stdout) or ("/usr/bin/vsedit" not in vsedit_path.stdout)

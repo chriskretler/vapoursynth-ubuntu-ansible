@@ -1,0 +1,43 @@
+---
+- name: qmake
+  command: "{{ item }}"
+  args:
+    chdir: "{{ install_directory }}/pro"
+  with_items:
+    - qmake -norecursive pro.pro CONFIG+=release
+    - make clean
+    - make
+  become: false
+
+- name: create applications directory in home
+  file:
+    path: "{{ home_directory }}/Applications/VapourSynth-Editor"
+    state: directory
+
+- name: copy application directory from build to home directory
+  synchronize:
+    src: "{{ install_directory }}/build/release-64bit-gcc/"
+    dest: "{{ home_directory }}/Applications/VapourSynth-Editor"
+  delegate_to: "{{ inventory_hostname }}"
+  become: false
+
+- name: Create link in /usr/bin to binary
+  file:
+    src: "{{ home_directory }}/Applications/VapourSynth-Editor/vsedit"
+    dest: /usr/bin/vsedit
+    owner: root
+    group: root
+    state: link
+    mode: '0775'
+  become: true
+
+- name: create desktop applications directory
+  file:
+    path: "{{ home_directory }}/.local/share/applications"
+    state: directory
+
+- name: create launcher shortcut from local file
+  copy:
+    src: ../vsedit.desktop
+    dest: "{{ home_directory }}/.local/share/applications"
+    mode: '0644'

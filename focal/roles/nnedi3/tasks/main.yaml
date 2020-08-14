@@ -1,0 +1,11 @@
+---
+- set_fact:
+    repo: https://github.com/dubhater/vapoursynth-nnedi3
+    tag: "{{ nnedi3_tag }}"
+    install_directory: "{{ home_directory }}/installs/vapoursynth-nnedi3"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install nnedi3
+  import_tasks: install_nnedi3.yaml

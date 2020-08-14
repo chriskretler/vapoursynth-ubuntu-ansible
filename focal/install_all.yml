@@ -1,0 +1,27 @@
+---
+- name: Update paths and packages
+  hosts: default
+  roles:
+    - common
+
+- name: Install vapoursynth
+  import_playbook: install_vapoursynth.yml
+
+- name: Install utility applications
+  hosts: default
+  roles:
+    - vsedit
+    - d2vwitch
+
+- name: Install plugins
+  import_playbook: install_plugins.yml
+
+- name: Install scripts
+  hosts: default
+  roles:
+    - scripts
+
+- name: Install sample files
+  hosts: default
+  roles:
+    - sample-files

@@ -1,0 +1,11 @@
+---
+- set_fact:
+    repo: https://github.com/sekrit-twc/znedi3
+    tag: "{{ znedi3_tag }}"
+    install_directory: "{{ home_directory }}/installs/znedi3"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install znedi3
+  import_tasks: install_znedi3.yaml

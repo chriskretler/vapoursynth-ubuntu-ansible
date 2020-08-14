@@ -1,0 +1,14 @@
+---
+- name: install packages
+  import_tasks: install_packages.yaml
+
+- set_fact:
+    repo: https://github.com/dubhater/vapoursynth-histogram
+    tag: "{{ histogram_tag }}"
+    install_directory: "{{ home_directory }}/installs/vapoursynth-histogram"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install histogram
+  import_tasks: install_histogram.yaml

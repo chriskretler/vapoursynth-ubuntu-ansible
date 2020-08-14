@@ -1,0 +1,14 @@
+---
+- name: install packages
+  import_tasks: install_packages.yaml
+
+- set_fact:
+    repo: https://github.com/sekrit-twc/zimg.git
+    tag: "{{ zimg_desired_version }}"
+    install_directory: "{{ home_directory }}/installs/zimg"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install zimg
+  import_tasks: install_zimg.yaml

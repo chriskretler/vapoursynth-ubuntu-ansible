@@ -1,0 +1,11 @@
+---
+- name: make samples directory
+  file:
+    path: "{{ home_directory }}/samples"
+    state: directory
+  become: false
+
+- name: install sample script
+  copy:
+    src: ../../../../sample-script.vpy
+    dest: "{{ home_directory }}/samples"

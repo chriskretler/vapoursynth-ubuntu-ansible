@@ -1,0 +1,11 @@
+---
+- set_fact:
+    repo: https://github.com/dwbuiten/d2vsource
+    tag: "{{ d2vsource_tag }}"
+    install_directory: "{{ home_directory }}/installs/d2vsource"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install d2vsource
+  import_tasks: install_d2vsource.yaml
