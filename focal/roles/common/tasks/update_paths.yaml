@@ -15,12 +15,17 @@
 
 - name: Conditionally set PYTHONPATH
   block:
-    - name: set PYTHONPATH
-      shell: echo 'export PYTHONPATH="{{ pythonpath }}"' | sudo tee --append "/etc/profile.d/vapoursynth-paths.sh"
+  - name: create profile script to set PYTHONPATH
+    shell: echo 'export PYTHONPATH="{{ pythonpath }}"' | tee --append "/tmp/vapoursynth-paths.sh"
+  - name: copy script to etc profile.d
+    shell: cp "/tmp/vapoursynth-paths.sh" "/etc/profile.d/"
+    become: true
+  - name: remove tmp file
+    shell: rm /tmp/vapoursynth-paths.sh
   when: "'{{ pythonpath }}' not in python_path_set.stdout"
 
 - set_fact:
-    pythonpath: "{{ pythonpath }}"  
+    pythonpath: "{{ pythonpath }}"
 
 # placing /usr/local/lib in ld.so.conf is required so vapoursynth can find plugins.
 - name: is ld_so_conf set?
@@ -37,7 +42,8 @@
 - name: Conditionally set ld_so_conf
   block:
     - name: update ld_so_conf path
-      shell: "echo 'include /usr/local/lib' | sudo tee --append '/etc/ld.so.conf'"
+      shell: "echo 'include /usr/local/lib' | tee --append '/etc/ld.so.conf'"
+      become: true
   when: "'/usr/local/lib' not in ld_so_conf_set.stdout"
 
 - name: where is your home directory?

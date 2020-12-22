@@ -6,4 +6,4 @@ virtualbox
 [default:vars]
 ansible_python_interpreter=/usr/bin/python3
 # last variable from here: https://www.toptechskills.com/ansible-tutorials-courses/how-to-fix-usr-bin-python-not-found-error-tutorial/
-# Won't be need when the host is ubuntu 20.04 or greater, which uses python3 by default.
+# Can either set the interpreter variable or install the `python-is-python3` package
