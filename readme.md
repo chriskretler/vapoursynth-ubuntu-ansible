@@ -71,13 +71,5 @@ https://forum.doom9.org/showthread.php?t=175522
   - Create a link to vapoursynth.so in python's standard path, like /usr/local/lib/python3.6/dist-packages/
 
 #### To-Dos:
-1. ubuntu 20.04
-  - plugins needing meson >45:
-  - dfttest
-  - bm3d
-    - current tag: r8
-  - mvtools
-  - could install meson 48 in ubuntu 18.04 via pip.
-2. One readme
+1. focal: apt deprecation warning message
 3. more instructive messages when ansible checks (like ld.so.conf) fail.
-4. mvtools_tag: v23

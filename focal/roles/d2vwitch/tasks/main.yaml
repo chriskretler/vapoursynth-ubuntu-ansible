@@ -1,6 +1,6 @@
 ---
 - name: what version is currrently installed?
-  shell: d2vwitch --version | sed -n 1p
+  shell: d2vwitch --version 2>&1 | sed -n 1p
   register: d2vwitch_current_version
   ignore_errors: True
 
