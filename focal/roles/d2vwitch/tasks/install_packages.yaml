@@ -13,4 +13,6 @@
     - libavformat-dev
     - libavcodec-dev
     - qt5-default
+    - meson
+    - ninja-build
   become: true

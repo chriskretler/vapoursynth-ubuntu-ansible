@@ -6,4 +6,6 @@
   with_items:
     - libfftw3-3
     - libfftw3-dev
+    - meson
+    - ninja-build
   become: true
