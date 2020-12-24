@@ -31,11 +31,10 @@ or:<br>
 
 #### Using with a VirtualBox VM:
 1. create vm:
-  - download iso: https://releases.ubuntu.com/focal/ubuntu-20.04-desktop-amd64.iso
-  - install
+  - iso can be found here: https://releases.ubuntu.com/focal/ubuntu-20.04-desktop-amd64.iso
 2. allow ssh to guest via port forwarding
+  - install ssh: `sudo apt install ssh`
   - virtualbox settings -> network -> adapter 1 -> advanced:
-    - set adapter type to: paravirtualized Network
     - Under Port Forwarding: create a rule with host ip:port - 127.0.0.1:2222 and guest ip:port = blank:22
 3. Add local key to guest, to avoid having to use a password.
   - `scp -P 2222 ~/.ssh/ssh_user_ed25519_key.pub my-virtualbox-user@127.0.0.1:~/.ssh/authorized_keys`
