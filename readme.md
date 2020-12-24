@@ -71,5 +71,6 @@ https://forum.doom9.org/showthread.php?t=175522
   - Create a link to vapoursynth.so in python's standard path, like /usr/local/lib/python3.6/dist-packages/
 
 #### To-Dos:
-1. focal: apt deprecation warning message
-3. more instructive messages when ansible checks (like ld.so.conf) fail.
+1. focal: address apt items deprecation warning message
+2. more instructive messages when ansible checks (like ld.so.conf) fail.
+3. vapoursynth editor 2. 12/23/2020: Currently relies on qt 5.15, which isn't available as an ubuntu 20.04 package.

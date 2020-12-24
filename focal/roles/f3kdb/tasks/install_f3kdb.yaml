@@ -1,9 +1,9 @@
 ---
-- name: update waf to use python3
-  replace:
-    path: "{{ install_directory }}/waf"
-    regexp: "python"
-    replace: "python3"
+# - name: update waf to use python3
+#   replace:
+#     path: "{{ install_directory }}/waf"
+#     regexp: "python"
+#     replace: "python3"
 
 - name: configure build
   command: "{{ item }}"

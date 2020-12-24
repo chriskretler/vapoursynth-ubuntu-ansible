@@ -1,6 +1,6 @@
 ---
 - name: what vapoursynth version is currrently installed?
-  shell: PYTHONPATH=/usr/local/lib/python3.6/site-packages vspipe --version | sed -n 3p | cut -d " " -f 2
+  shell: PYTHONPATH=/usr/local/lib/python3.8/site-packages vspipe --version | sed -n 3p | cut -d " " -f 2
   register: vapoursynth_current_version
   ignore_errors: True
 
