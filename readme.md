@@ -21,7 +21,7 @@ sudo apt install ansible
 ```
 
 #### Running playbooks locally.
-Run from /ansible directory<br>
+Run from /bionic or /focal directory<br>
 `$ ansible-playbook -i hosts_local install_all.yml --ask-become-pass`<br>
 or:<br>
 `$ ansible-playbook -i hosts_local install_vapoursynth.yml --ask-become-pass`<br>
