@@ -2,7 +2,7 @@ import vapoursynth as vs
 import havsfunc as hf
 import mvsfunc as mf
 
-core = vs.get_core()
+core = vs.core
 
 clip = core.std.BlankClip(length=1000, format=vs.YUV420P8)
 clip = hf.QTGMC(clip, Preset='Placebo', TFF=True)
