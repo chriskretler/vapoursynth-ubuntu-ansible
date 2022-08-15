@@ -1,0 +1,7 @@
+---
+- name: Install utility applications
+  hosts: default
+  roles:
+    #- bestaudiosource
+    - vsedit-mod
+    - d2vwitch

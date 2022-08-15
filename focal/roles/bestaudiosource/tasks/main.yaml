@@ -1,0 +1,14 @@
+---
+# - name: install packages
+#   import_tasks: install_packages.yaml
+
+- set_fact:
+    repo: https://github.com/vapoursynth/bestaudiosource
+    tag: "{{ bestaudiosource_tag }}"
+    install_directory: "{{ home_directory }}/installs/bestaudiosource"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install bestaudiosource
+  import_tasks: install_bestaudiosource.yaml

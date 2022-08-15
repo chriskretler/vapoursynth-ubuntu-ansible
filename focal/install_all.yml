@@ -8,10 +8,7 @@
   import_playbook: install_vapoursynth.yml
 
 - name: Install utility applications
-  hosts: default
-  roles:
-    - vsedit
-    - d2vwitch
+  import_playbook: install_utilities.yml
 
 - name: Install plugins
   import_playbook: install_plugins.yml
