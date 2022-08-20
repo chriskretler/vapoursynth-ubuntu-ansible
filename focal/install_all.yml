@@ -14,9 +14,7 @@
   import_playbook: install_plugins.yml
 
 - name: Install scripts
-  hosts: default
-  roles:
-    - scripts
+  import_playbook: install_scripts.yml
 
 - name: Install sample files
   hosts: default
