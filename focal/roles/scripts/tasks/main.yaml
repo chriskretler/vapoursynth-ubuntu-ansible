@@ -52,3 +52,12 @@
     src: "{{ role_path }}/files/trim.py"
     dest: "{{ pythonpath }}"
     mode: '0644'
+
+
+### Install vsutil via pip
+# https://github.com/Irrational-Encoding-Wizardry/vsutil
+- name: install vsutil via pip
+  pip:
+    name: vsutil
+    executable: pip3
+  become: true
