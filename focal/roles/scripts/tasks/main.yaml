@@ -43,3 +43,12 @@
   args:
     chdir: "{{ install_directory }}"
   become: true
+
+### Install trim override which edits video and audio in parallel.
+### https://forum.doom9.net/showthread.php?p=1969303#post1969303
+- name: install parallel video and audio trim script
+  become: true
+  copy:
+    src: "{{ role_path }}/files/trim.py"
+    dest: "{{ pythonpath }}"
+    mode: '0644'
