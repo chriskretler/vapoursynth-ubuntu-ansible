@@ -1,4 +1,9 @@
 ---
+- name: Update paths and packages
+  hosts: default
+  roles:
+    - common
+
 - name: Install utility applications
   hosts: default
   roles:
