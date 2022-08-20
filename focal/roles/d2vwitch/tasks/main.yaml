@@ -5,7 +5,10 @@
   ignore_errors: True
 
 - debug:
-    var: d2vwitch_desired_version > d2vwitch_current_version.stderr
+    var: d2vwitch_current_version.stdout
+
+- debug:
+    var: d2vwitch_desired_version > d2vwitch_current_version.stdout
 
 - name: install latest d2vwitch
   block:
@@ -22,4 +25,4 @@
 
     - name: install d2vwitch
       import_tasks: install_d2vwitch.yaml
-  when: d2vwitch_desired_version > d2vwitch_current_version.stderr
+  when: d2vwitch_desired_version > d2vwitch_current_version.stdout
