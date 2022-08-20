@@ -1,0 +1,14 @@
+---
+- name: install packages
+  import_tasks: install_packages.yaml
+
+- set_fact:
+    repo: https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3
+    tag: "{{ eedi3m_tag }}"
+    install_directory: "{{ home_directory }}/installs/VapourSynth-EEDI3"
+
+- name: update git status
+  import_tasks: ../../git/tasks/main.yaml
+
+- name: install eedi3m
+  import_tasks: install_eedi3m.yaml

@@ -1,0 +1,9 @@
+---
+- name: install packages
+  apt:
+    name:
+      - meson
+      - ninja-build
+    state: present
+    autoclean: true
+  become: true

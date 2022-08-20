@@ -1,0 +1,10 @@
+---
+- name: Update paths and packages
+  hosts: default
+  roles:
+    - common
+
+- name: Install commonly-used utility scripts
+  hosts: default
+  roles:
+    - scripts

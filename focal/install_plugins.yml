@@ -7,7 +7,8 @@
 - name: Install individual plugins
   hosts: default
   roles:
-    - d2vsource    
+    - d2vsource
+    - eedi3m
     - fmtconv
     - ffms2
     - mvtools
