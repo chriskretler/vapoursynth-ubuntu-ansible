@@ -1,0 +1,30 @@
+package,repo,used version,Current version,Updated?,notes
+vapoursynth,https://github.com/vapoursynth/vapoursynth,R52,R59,x,8/13/2022: vsynth R59 installed and functioning. Changes committed to GH
+adjust,https://github.com/dubhater/vapoursynth-adjust,v1,master,x,"7/9/2022: updated for v4 api, v1 tag no longer used. 8/20/2022: changes pushed to GH."
+bestaudiosource,https://github.com/vapoursynth/bestaudiosource,,master,x,8/13/2022: Preferred filter for importing audio files into vsynth. Changes committed to GH.
+bm3d,https://github.com/HomeOfVapourSynthEvolution/VapourSynth-BM3D,r8,r9,x,8/21/2022: changes committed to GH.
+d2vsource,https://github.com/dwbuiten/d2vsource,v1.2,master,x ,7/9/2022: v1.2 tag is several years behind master. Last commit on 11/3/2021. 8/21/2022: changes committed to GH.
+d2vwitch,https://github.com/dubhater/D2VWitch,v5,master,x,8/20/2022: change from v5 to master. Changes tested and committed to GH.
+damb,https://github.com/dubhater/vapoursynth-damb,v3,v3,x,8/19/2022: damb cannot read data after r55 API version changes. 8/20: removed and committed to GH.
+dfttest,https://github.com/HomeOfVapourSynthEvolution/VapourSynth-DFTTest,r7,master,x,7/9/2022: commit to master after r7 tag included support for fft threads. Needed to uninstall pip meson to build.
+eedi3m,https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3/,,master,x,8/20/2022: Had not been installed before. Now needed with updated qtgmc. Role created and pushed to GH.
+f3kdb (flash3kyuu_deband),https://github.com/SAPikachu/flash3kyuu_deband,master,master,x,7/9/2022: no commits since 6/30/2019
+ffmpeg,https://github.com/ffmpeg/ffmpeg.git,n4.3.1,N4.4.2,x,8/13/2022: n4.4.2 on 4/14/2022. ubuntu 20.04 is provided 4.2.7—the latest 4.2.x—in package repo. Changes committed to GH
+ffms2,https://github.com/FFMS/ffms2,2.4,master,x,"7/9/2022: Bunch of commits since 2.40 tag, last is from 6/18/2022."
+fft3dfilter,https://github.com/myrsloik/VapourSynth-FFT3DFilter,64323f0,R2,x,7/9/2022: R2 based on latest commit.
+fmtconv,https://github.com/EleonoreMizo/fmtconv,r22,r29,x,"7/9/2022: r29 on 4/11/2022. Several commits since then, but tags seem to come regularly. 8/21/2022: changes commited to GH."
+havsfunc,https://github.com/HomeOfVapourSynthEvolution/havsfunc,r33,master,x,"7/9/2022: Bunch of recent commits. R33 is from June 2020.
+8/20/2022: changes pushed to GH."
+histogram,https://github.com/dubhater/vapoursynth-histogram,v2,master,x,7/9/2022: v2 on 6/7/2018. Last commit on 10/28/2021 supports vsapi4.
+mvtools,https://github.com/dubhater/vapoursynth-mvtools,v23,v23,x,7/9/2022: Do not see specific updates for v4. No updates since last tag on 5/8/2020
+mvsfunc,https://github.com/HomeOfVapourSynthEvolution/mvsfunc,r8,r10,x,7/9/2022: r10 in-sync with last commit from 11/4/2021. 8/2-/2022: changes pushed to GH.
+nnedi3,https://github.com/dubhater/vapoursynth-nnedi3,v12,v12,x,7/9/2022: last update was 9/2018. no updates since last tag.
+vsedit,https://github.com/YomikoR/VapourSynth-Editor,r19,r19-mod-5.3,x,"7/9/2022: last commit in https://bitbucket.org/mystery_keeper/vapoursynth-editor on 1/20/2019. Two potential forks:
+https://github.com/YomikoR/VapourSynth-Editor - the more active, last commit 6/20/2022. Tag is r19-mod-5.3
+https://github.com/AmusementClub/VapourSynth-Editor. 
+
+8/20/2022: role for vsedit has been created  and committed to GH"
+vsutil,https://github.com/Irrational-Encoding-Wizardry/vsutil,,0.8.0,x,8/20/2022: installed via pip
+zimg,https://github.com/sekrit-twc/zimg,release-3.0.1,release-3.0.4,x,8/13/2022: vsynth r58 uses zimg 3.0.4. Changes committed to GH.
+znedi3,https://github.com/sekrit-twc/znedi3,master,master,x,7/9/2022: vsynth v4 API with a commit on 6/7/2022
+trim,https://forum.doom9.net/showthread.php?p=1969303#post1969303,,,x,8/19/2022: Included in scripts directory for parallel trims of video and audio. 8/20/2022: changes committed to GH.
