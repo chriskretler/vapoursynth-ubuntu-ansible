@@ -1,8 +1,0 @@
-vagrant-vbox ansible_host=127.0.0.1 ansible_port=2222
-
-[default]
-vagrant-vbox
-
-[default:vars]
-ansible_python_interpreter=/usr/bin/python3
-# last variable from here: https://www.toptechskills.com/ansible-tutorials-courses/how-to-fix-usr-bin-python-not-found-error-tutorial/

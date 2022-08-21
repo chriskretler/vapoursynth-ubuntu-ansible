@@ -1,8 +1,0 @@
-127.0.0.1 ansible_connection=local
-
-[default]
-127.0.0.1
-
-[default:vars]
-ansible_python_interpreter=/usr/bin/python3
-# last variable from here: https://www.toptechskills.com/ansible-tutorials-courses/how-to-fix-usr-bin-python-not-found-error-tutorial/

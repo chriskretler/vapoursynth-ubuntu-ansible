@@ -1,5 +1,5 @@
 ### Overview
-Ansible playbooks for installing vapoursynth, it's dependencies, select plugins and scripts on Ubuntu bionic and focal. Instructions for running against VirtualBox VMs are also included, primarily for test purposes.
+Ansible playbooks for installing vapoursynth, it's dependencies, select plugins and scripts on Ubuntu focal and jammy. Instructions for running against VirtualBox VMs are also included, primarily for test purposes.
 
 The installation includes a sample script to confirm that your vapoursynth stack is successfully setup. The sample file is a black blank clip that is filtered by bm3d and processed through smoothlevels to verify a couple of complicated filter/script stacks. To run the sample script:
 
@@ -21,12 +21,14 @@ sudo apt install ansible
 ```
 
 #### Running playbooks locally.
-Run from /bionic or /focal directory<br>
+Run from focal or jammy branch<br>
 `$ ansible-playbook -i hosts_local install_all.yml --ask-become-pass`<br>
 or:<br>
 `$ ansible-playbook -i hosts_local install_vapoursynth.yml --ask-become-pass`<br>
 or:<br>
-`$ ansible-playbook -i hosts_local install_plugins.yml --ask-become-pass`
+`$ ansible-playbook -i hosts_local install_plugins.yml --ask-become-pass`<br>
+or:<br>
+`$ ansible-playbook -i hosts_local install_utilities.yml --ask-become-pass`
 
 
 #### Using with a VirtualBox VM:
@@ -55,11 +57,6 @@ host_key_checking = False
 ```
 This should not be used for persistent hosts.
 
-3. Why are you using a specific commit for the vapoursynth-fft3dfilter?
-- 12/22/2020: vapoursynth-fft3dfilter needs to be built with the commit just before switch to vapoursynth4 api. Fix is explained here:
-  - https://aur.archlinux.org/packages/vapoursynth-plugin-fft3dfilter-git/?comments=all#comment-765806
-- vsynth R52 doesn't contain the vsynth4 api, it is still in the doodle1 branch
-
 
 ### Troubleshooting:
 - Problems with vapoursynth compilation? Look for libraries and paths in this thread:
@@ -72,4 +69,3 @@ https://forum.doom9.org/showthread.php?t=175522
 #### To-Dos:
 1. focal: address apt items deprecation warning message
 2. more instructive messages when ansible checks (like ld.so.conf) fail.
-3. vapoursynth editor 2. 12/23/2020: Currently relies on qt 5.15, which isn't available as an ubuntu 20.04 package.
