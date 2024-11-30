@@ -1,31 +1,11 @@
 ---
-# 6/6/2020: put this here instead of ~/.bashrc so it will work for things other than bash.
-# https://wiki.debian.org/EnvironmentVariables
-# pythonpath is required for vspipe and vsedit to find vapoursynth and scripts
-- name: is python path set?
-  shell: "grep {{ pythonpath }} /etc/profile.d/vapoursynth-paths.sh"
-  register: python_path_set
-  ignore_errors: True
-
-- debug:
-    var: python_path_set.stdout
-
-- debug:
-    var: "'{{ pythonpath }}' in python_path_set.stdout"
-
-- name: Conditionally set PYTHONPATH
-  block:
-  - name: create profile script to set PYTHONPATH
-    shell: echo 'export PYTHONPATH="{{ pythonpath }}"' | tee --append "/tmp/vapoursynth-paths.sh"
-  - name: copy script to etc profile.d
-    shell: cp "/tmp/vapoursynth-paths.sh" "/etc/profile.d/"
-    become: true
-  - name: remove tmp file
-    shell: rm /tmp/vapoursynth-paths.sh
-  when: "'{{ pythonpath }}' not in python_path_set.stdout"
-
-- set_fact:
-    pythonpath: "{{ pythonpath }}"
+- name: Create a file to set the pythonpath variable
+  become: yes
+  ansible.builtin.copy:
+    dest: /etc/environment.d/vapoursynth.conf
+    content: |
+      PYTHONPATH="${PYTHONPATH:+${PYTHONPATH}:}/usr/local/lib/python3.12/site-packages"
+    mode: '0644'
 
 # placing /usr/local/lib in ld.so.conf is required so vapoursynth can find plugins.
 - name: is ld_so_conf set?
@@ -35,9 +15,6 @@
 
 - debug:
     var: ld_so_conf_set.stdout
-
-- debug:
-    var: "'/usr/local/lib' in ld_so_conf_set.stdout"
 
 - name: Conditionally set ld_so_conf
   block:
