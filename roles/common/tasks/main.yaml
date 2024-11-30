@@ -1,6 +1,12 @@
 ---
-- name: update packages
+- name: Update packages
   import_tasks: update_packages.yaml
+  when: install_state == "present"
 
-- name: update paths
+- name: Update paths
   import_tasks: update_paths.yaml
+  when: install_state == "present"
+
+- name: Remove path artifacts
+  import_tasks: remove_paths.yaml
+  when: install_state == "absent"

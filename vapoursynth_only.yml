@@ -1,6 +1,8 @@
 ---
 - name: Update paths and packages
   hosts: default
+  vars:
+    install_state: 'present'
   roles:
     - common
 
