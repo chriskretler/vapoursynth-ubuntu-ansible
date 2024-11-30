@@ -5,7 +5,7 @@
     dest: /etc/environment.d/vapoursynth.conf
     state: absent
 
-# this is required for removing git repos downstream
+# this is required for removing local git folders in other roles
 - name: where is your home directory?
   shell: 'echo $HOME'
   register: home_shell
