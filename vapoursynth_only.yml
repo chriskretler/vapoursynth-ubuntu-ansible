@@ -6,11 +6,15 @@
 
 - name: Install dependencies
   hosts: default
+  vars:
+    install_state: 'present'
   roles:
     - zimg
     - ffmpeg
 
 - name: Install vapoursynth
   hosts: default
+  vars:
+    install_state: 'present'
   roles:
     - vapoursynth
