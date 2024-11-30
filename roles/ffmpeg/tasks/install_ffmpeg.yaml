@@ -1,5 +1,5 @@
 ---
-- name: autogen configure make
+- name: Build ffmpeg
   shell: "{{ item }}"
   args:
     chdir: "{{ install_directory }}"
@@ -9,7 +9,7 @@
     - make -j $(nproc)
   become: false
 
-- name: make install
+- name: Install ffmpeg binary
   command: make install
   args:
     chdir: "{{ install_directory }}"
@@ -19,6 +19,4 @@
 # path must be part of /etc/ld.so.conf
 - name: ldconfig
   command: ldconfig
-  args:
-    chdir: "{{ install_directory }}"
   become: true

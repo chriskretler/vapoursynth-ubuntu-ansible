@@ -7,6 +7,4 @@
     - nasm
     - yasm
     - libx264-dev
-    - libx264-155
-    - git
   become: true
