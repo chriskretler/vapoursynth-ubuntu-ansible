@@ -1,5 +1,5 @@
 ---
-- name: autogen configure make
+- name: Build zimg
   shell: "{{ item }}"
   args:
     chdir: "{{ install_directory }}"
@@ -10,7 +10,7 @@
     - make -j $(nproc)
   become: false
 
-- name: make install
+- name: Install zimg binary
   command: make install
   args:
     chdir: "{{ install_directory }}"

@@ -1,0 +1,11 @@
+---
+- name: Remove zimg binary
+  command: make uninstall
+  args:
+    chdir: "{{ install_directory }}"
+  become: true
+
+- name: Remove zimg code directory
+  ansible.builtin.file:
+    path: "{{ install_directory }}"
+    state: absent

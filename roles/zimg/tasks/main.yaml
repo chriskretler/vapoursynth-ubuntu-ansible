@@ -1,14 +1,21 @@
 ---
 - name: install packages
   import_tasks: install_packages.yaml
+  when: install_state == "present"
 
 - set_fact:
-    repo: https://github.com/sekrit-twc/zimg.git
-    tag: "{{ zimg_desired_version }}"
     install_directory: "{{ home_directory }}/installs/zimg"
 
-- name: update git status
-  import_tasks: ../../git/tasks/main.yaml
+- name: Update local git repo
+  ansible.builtin.git:
+    repo: https://github.com/sekrit-twc/zimg.git
+    dest: "{{ install_directory }}"
+    version: "{{ zimg_desired_version }}"
 
-- name: install zimg
+- name: Install zimg
   import_tasks: install_zimg.yaml
+  when: install_state == "present"
+
+- name: Remove zimg
+  import_tasks: remove_zimg.yaml
+  when: install_state == "absent"
