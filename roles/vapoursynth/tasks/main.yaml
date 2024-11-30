@@ -1,28 +1,15 @@
 ---
-- name: what vapoursynth version is currrently installed?
-  shell: PYTHONPATH=/usr/local/lib/python3.8/site-packages vspipe --version | sed -n 3p | cut -d " " -f 2
-  register: vapoursynth_current_version
-  ignore_errors: True
+- name: install packages
+  import_tasks: install_packages.yaml
+  when: install_state == "present"
 
-- debug:
-    var: vapoursynth_current_version.stdout
-- debug:
-    var: vapoursynth_desired_version > vapoursynth_current_version.stdout
+- set_fact:
+    install_directory: "{{ home_directory }}/installs/vapoursynth"
 
-- name: install latest vapoursynth
-  block:
-    - name: install packages
-      import_tasks: install_packages.yaml
+- name: install vapoursynth
+  import_tasks: install_vapoursynth.yaml
+  when: install_state == "present"
 
-    - set_fact:
-        repo: https://github.com/vapoursynth/vapoursynth.git
-        tag: "{{ vapoursynth_desired_version }}"
-        install_directory: "{{ home_directory }}/installs/vapoursynth"
-
-    - name: update git status
-      import_tasks: ../../git/tasks/main.yaml
-
-    - name: install vapoursynth
-      import_tasks: install_vapoursynth.yaml
-  when: vapoursynth_desired_version > vapoursynth_current_version.stdout
-#        ('"not found" in vapoursynth_current_version.stderr')
+- name: Remove vapoursynth
+  import_tasks: remove_vapoursynth.yaml
+  when: install_state == "absent"

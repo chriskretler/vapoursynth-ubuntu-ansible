@@ -1,0 +1,20 @@
+---
+- name: Remove vsynth binary
+  command: make uninstall
+  args:
+    chdir: "{{ install_directory }}"
+  become: true
+
+- name: Remove config directory
+  ansible.builtin.file:
+    path: "{{ home_directory }}/.config/vapoursynth"
+    state: absent
+
+- name: Remove code directory
+  ansible.builtin.file:
+    path: "{{ install_directory }}"
+    state: absent
+
+- name: ldconfig
+  command: ldconfig
+  become: true

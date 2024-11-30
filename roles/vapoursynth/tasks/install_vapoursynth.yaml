@@ -1,5 +1,11 @@
 ---
-- name: autogen configure make
+- name: Update local git repo
+  ansible.builtin.git:
+    repo: https://github.com/vapoursynth/vapoursynth.git
+    dest: "{{ install_directory }}"
+    version: "{{ vapoursynth_desired_version }}"
+
+- name: Build steps
   shell: "{{ item }}"
   args:
     chdir: "{{ install_directory }}"
@@ -10,7 +16,7 @@
     - make -j $(nproc)
   become: false
 
-- name: make install
+- name: Install binary
   command: make install
   args:
     chdir: "{{ install_directory }}"
@@ -28,6 +34,4 @@
 
 - name: ldconfig
   command: ldconfig
-  args:
-    chdir: "{{ install_directory }}"
   become: true
